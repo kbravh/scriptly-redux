@@ -54,6 +54,14 @@ main {
   margin-bottom: 40px;
 }
 
+.welcome {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 400px;
+  margin: 5px;
+}
+
 @media only screen and (max-width: 760px) {
   .home {
     flex-direction: column;
@@ -61,20 +69,16 @@ main {
 
   .welcome {
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 }
 
 @media only screen and (max-width: 475px) {
   main {
-    margin: 70px 30px;
+    margin: 70px 0px;
   }
-}
-
-.welcome {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  max-width: 400px;
 }
 
 .error-box {
