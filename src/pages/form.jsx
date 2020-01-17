@@ -4,6 +4,7 @@ import SEO from '../components/seo'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 import Toggle from 'react-toggle'
+import '../components/css/toggle.css'
 import Calendar from 'react-calendar'
 import 'react-calendar/dist/Calendar.css';
 
@@ -17,11 +18,12 @@ const BlessingForm = () => {
   return (
     <Layout>
       <SEO title="Form" />
+      <h2 style={{textAlign: 'center'}}>Enter your patriarchal blessing information below.</h2>
       <Formik
         initialValues={{
           firstName: '', middleName: '', lastName: '',
           mother: '', father: '', gender: false,
-          patriarch: '', stake: '', blessing: '', date:today
+          patriarch: '', stake: '', blessing: '', date: today
         }}
         onSubmit={(values, actions) => {
           console.log('submitting')
@@ -39,43 +41,48 @@ const BlessingForm = () => {
         })}
       >
         {({ isSubmitting, setFieldValue }) => (
-          <Form>
+          <Form className="blessing-form shadow">
 
             <Field type="text" name="firstName" placeholder="First Name" />
-            <ErrorMessage name="firstName" component="div" className="errorBox" />
+            <ErrorMessage name="firstName" component="div" className="error-box" />
 
             <Field type="text" name="middleName" placeholder="Middle Name" />
 
             <Field type="text" name="lastName" placeholder="Last Name" />
-            <ErrorMessage name="lastName" component="div" className="errorBox" />
+            <ErrorMessage name="lastName" component="div" className="error-box" />
 
-            <label htmlFor="gender">Gender</label>
-            <Field name="gender">
-              {({ field: {value, onChange} }) => (
-                <Toggle
-                  id="gender"
-                  checked={value}
-                  onChange={onChange}
-                  icons={{
-                    checked: <img alt="" src={male} />,
-                    unchecked: <img alt="" src={female} />
-                  }}
-                />
-              )}
-            </Field>
+            <div className="gender-toggle">
+              <label htmlFor="gender">Gender</label>
+              <Field name="gender">
+                {({ field: { value, onChange } }) => (
+                  <>
+                    <Toggle
+                      id="gender"
+                      checked={value}
+                      onChange={onChange}
+                      icons={{
+                        checked: <img alt="" src={male} />,
+                        unchecked: <img alt="" src={female} />
+                      }}
+                    />
+                    <span className="gender-label">{value ? 'Male' : 'Female'}</span>
+                  </>
+                )}
+              </Field>
+            </div>
 
             <Field type="text" name="mother" placeholder="Mother's Full Name" />
 
             <Field type="text" name="father" placeholder="Father's Full Name" />
 
             <Field type="text" name="patriarch" placeholder="Patriarch's Full Name" />
-            <ErrorMessage name="patriarch" component="div" className="errorBox" />
+            <ErrorMessage name="patriarch" component="div" className="error-box" />
 
             <Field type="text" name="stake" placeholder="Stake or District" />
-            <ErrorMessage name="stake" component="div" className="errorBox" />
+            <ErrorMessage name="stake" component="div" className="error-box" />
 
             <Field name="date">
-              {({field: {value}}) => (
+              {({ field: { value } }) => (
                 <Calendar
                   // locale=""
                   value={value}
@@ -85,8 +92,8 @@ const BlessingForm = () => {
               )}
             </Field>
 
-            <Field as="textarea" name="blessing" placeholder="Patriarchal Blessing" />
-            <ErrorMessage name="blessing" component="div" className="errorBox" />
+            <Field as="textarea" name="blessing" placeholder="Patriarchal Blessing" style={{resize: 'vertical'}} />
+            <ErrorMessage name="blessing" component="div" className="error-box" />
 
             <button className="action-button" type="submit" disabled={isSubmitting}>Generate Document</button>
           </Form>

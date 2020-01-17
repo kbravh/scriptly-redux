@@ -77,8 +77,14 @@ main {
   max-width: 400px;
 }
 
+.error-box {
+  margin-top: -20px;
+  color: var(--accent-color);
+  font-size: 0.9rem;
+}
+
 .shadow {
-  -moz-box-shadow: 3px 3px 5px var(--brand-color);
-  -webkit-box-shadow: 3px 3px 5px var(--brand-color);
-  box-shadow: 3px 3px 5px var(--brand-color);
+  -moz-box-shadow: 3px 3px 5px 2px #10254233;
+  -webkit-box-shadow: 3px 3px 5px 2px #10254233;
+  box-shadow: 3px 3px 5px 2px #10254233;
 }
