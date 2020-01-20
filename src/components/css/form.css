@@ -17,6 +17,10 @@
   margin-bottom: 0;
 }
 
+.blessing-form h5 {
+  margin-bottom: 5px;
+}
+
 .blessing-form input {
   border-radius: 2px;
   padding: 5px;
@@ -30,13 +34,21 @@
 
 .gender-toggle {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  justify-content: space-between;
-  height: 100px;
+  justify-content: space-around;
+  height: 50px;
+}
+
+.gender-label {
+  margin-bottom: 0;
 }
 
 .react-calendar {
   width: 100%;
   max-width: 350px;
+}
+
+.optional-tag {
+  color: #444;
 }
