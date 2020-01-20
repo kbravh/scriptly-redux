@@ -14,7 +14,7 @@ import male from '../images/male.svg'
 import female from '../images/female.svg'
 
 const BlessingForm = () => {
-  const today = new Date()
+  const today = new Date() // default value for the calendar
   return (
     <Layout>
       <SEO title="Form" />
