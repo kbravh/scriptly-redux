@@ -1,4 +1,5 @@
-import React from 'react'
+import React, {useContext} from 'react'
+import FormContext from '../contexts/FormContext'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
@@ -13,10 +14,11 @@ import '../components/css/form.css'
 import male from '../images/male.svg'
 import female from '../images/female.svg'
 
-const BlessingForm = () => {
+const BlessingForm = ({navigate}) => {
   const today = new Date() // default value for the calendar
   const brandColor = getComputedStyle(document.documentElement).getPropertyValue('--brand-color');
   const accentColor = getComputedStyle(document.documentElement).getPropertyValue('--accent-color');
+  const {setFormData} = useContext(FormContext)
   return (
     <Layout>
       <SEO title="Form" />
@@ -29,10 +31,10 @@ const BlessingForm = () => {
         }}
         onSubmit={(values, actions) => {
           console.log('submitting')
-          setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
-            actions.setSubmitting(false);
-          }, 1000);
+          console.info('Adding form data to context')
+          setFormData(values)
+          console.info('Redirecting to download page')
+          navigate(`/download`)
         }}
         validationSchema={Yup.object().shape({
           firstName: Yup.string().required('This field is required'),
