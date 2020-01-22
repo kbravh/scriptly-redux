@@ -1,5 +1,4 @@
-import React, { useContext } from "react"
-import FormContext from '../contexts/FormContext'
+import React from "react"
 import { Link } from "gatsby"
 
 import Layout from "../components/layout"
@@ -9,8 +8,6 @@ import DocPreview from '../components/doc-preview'
 import '../components/css/index.css'
 
 const IndexPage = () => {
-  const {setFormData} = useContext(FormContext)
-  setFormData(null) // clear the form data if the user goes home, for security
   return (
     <Layout>
       <SEO title="Home" />
@@ -22,7 +19,7 @@ const IndexPage = () => {
         </div>
         <DocPreview />
       </div>
-      <Link to="/form" className="action-button">Get started</Link>
+      <Link to="/blessing" className="action-button">Get started</Link>
     </Layout>
   )
 }
