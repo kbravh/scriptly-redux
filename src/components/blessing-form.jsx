@@ -11,7 +11,8 @@ import '../components/css/form.css'
 import male from '../images/male.svg'
 import female from '../images/female.svg'
 
-const BlessingForm = () => {
+// TODO - check the state machine to see if there is already form data (for making corrections)
+const BlessingForm = ({send}) => {
   const today = new Date() // default value for the calendar
   const brandColor = getComputedStyle(document.documentElement).getPropertyValue('--brand-color');
   const accentColor = getComputedStyle(document.documentElement).getPropertyValue('--accent-color');
@@ -25,9 +26,8 @@ const BlessingForm = () => {
           patriarch: '', stake: '', blessing: '', date: today
         }}
         onSubmit={(values, actions) => {
-          console.log('submitting')
-          alert(values)
           actions.setSubmitting(false)
+          send('SUBMIT', {form: values}) // bump state machine and pass in form values
         }}
         validationSchema={Yup.object().shape({
           firstName: Yup.string().required('This field is required'),
