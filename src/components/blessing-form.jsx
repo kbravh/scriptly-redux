@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useState, useEffect} from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 import Toggle from 'react-toggle'
@@ -15,11 +15,12 @@ import female from '../images/female.svg'
 const BlessingForm = ({send}) => {
   const today = new Date() // default value for the calendar
   // set some sensible defaults
-  let brandColor = '#102542'
-  let accentColor = '#F87060'
+  const [colors, setColors] = useState({brandColor: '#102542', accentColor: '#F87060'})
   useEffect(() => {
-    brandColor = getComputedStyle && getComputedStyle(document.documentElement).getPropertyValue('--brand-color');
-    accentColor = getComputedStyle && getComputedStyle(document.documentElement).getPropertyValue('--accent-color');
+    setColors({
+      brandColor: getComputedStyle && getComputedStyle(document.documentElement).getPropertyValue('--brand-color'),
+      accentColor: getComputedStyle && getComputedStyle(document.documentElement).getPropertyValue('--accent-color')
+    })
   }, []) // pass empty array; we only need this to run once
 
   return (
@@ -73,7 +74,7 @@ const BlessingForm = ({send}) => {
                     />
                     <h4
                       className="gender-label"
-                      style={{ color: value ? brandColor : accentColor }}
+                      style={{ color: value ? colors.brandColor : colors.accentColor }}
                     >
                       {value ? 'Male' : 'Female'}
                     </h4>
