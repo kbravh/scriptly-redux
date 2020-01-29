@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 import Toggle from 'react-toggle'
@@ -14,8 +14,14 @@ import female from '../images/female.svg'
 // TODO - check the state machine to see if there is already form data (for making corrections)
 const BlessingForm = ({send}) => {
   const today = new Date() // default value for the calendar
-  const brandColor = getComputedStyle(document.documentElement).getPropertyValue('--brand-color');
-  const accentColor = getComputedStyle(document.documentElement).getPropertyValue('--accent-color');
+  // set some sensible defaults
+  let brandColor = '#102542'
+  let accentColor = '#F87060'
+  useEffect(() => {
+    brandColor = getComputedStyle && getComputedStyle(document.documentElement).getPropertyValue('--brand-color');
+    accentColor = getComputedStyle && getComputedStyle(document.documentElement).getPropertyValue('--accent-color');
+  }, []) // pass empty array; we only need this to run once
+
   return (
     <>
       <h2 style={{ textAlign: 'center' }}>Enter your patriarchal blessing information below.</h2>
