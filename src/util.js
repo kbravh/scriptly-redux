@@ -1,11 +1,11 @@
 const randomNum = (min, max) => {
-  return Math.floor(Math.random() * (max - min + 1) ) + min;
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 const getFullName = (firstName, middleName, lastName) => {
   return middleName ?
-  `${firstName} ${middleName} ${lastName}` :
-  `${firstName} ${lastName}`
+    `${firstName} ${middleName} ${lastName}` :
+    `${firstName} ${lastName}`
 }
 
 const getParentage = (motherName, fatherName, gender) => {
@@ -31,23 +31,28 @@ const splitBlessing = (blessing) => {
   // split the verses on punctuation
   let verses = blessingTrimmed.match(/[^.!?]+[.!?]+/g)
   // group sentences together to make longer verses
-  let longerVerses = [], index = 0
-  while(index < verses.length){
-    // grab a random number 2-3 for verse length
-    let random = randomNum(2,3)
-    //pull verses in, join, and add to array
-    longerVerses.push(verses.slice(index, index + random).join(' '))
-    // move down the array
-    index += random
-  }
-  // trim verse and add verse numbers to all except first verse
-  longerVerses = longerVerses.map((verse, i) => {
-    if (i === 0) {
-      return verse.trim()
-    } else {
-      return i + 1 + '. ' + verse.trim()
+  let longerVerses = [],
+    index = 0
+  if (verses) {
+    while (index < verses.length) {
+      // grab a random number 2-3 for verse length
+      let random = randomNum(2, 3)
+      //pull verses in, join, and add to array
+      longerVerses.push(verses.slice(index, index + random).join(' '))
+      // move down the array
+      index += random
     }
-  })
+    // trim verse and add verse numbers to all except first verse
+    longerVerses = longerVerses.map((verse, i) => {
+      if (i === 0) {
+        return verse.trim()
+      } else {
+        return i + 1 + '. ' + verse.trim()
+      }
+    })
+  } else { // mainly for testing purposes; triggered if there is no punctuation
+    longerVerses = [blessingTrimmed]
+  }
   return [firstLetter, longerVerses];
 }
 

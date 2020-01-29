@@ -12,7 +12,7 @@ const generateDocx = (context, _) => {
   console.log(`generating docx`)
   console.table(packet)
   return axios.post(
-    `https://api/.laborforzion.com/scriptly/docx`,
+    `https://api.laborforzion.com/scriptly/docx`,
     packet,
     { headers: { 'Content-Type': 'application/json', 'x-api-key': 'gKd0oWv9oa5sut9xpYQfJ5MwKk7ZHYsM9Iqn5HIB' } }
   ).then(response => JSON.parse(response.data.body))
@@ -22,7 +22,7 @@ const generatePDF = (context, _) => {
   console.log(`generating pdf`)
   return axios.post(
     `https://api.laborforzion.com/scriptly/pdf`,
-    context.docx_link,
+    {srcKey: context.docx_key},
     { headers: { 'Content-Type': 'application/json', 'x-api-key': 'gKd0oWv9oa5sut9xpYQfJ5MwKk7ZHYsM9Iqn5HIB' } }
   ).then(response => JSON.parse(response.data.body))
 }
@@ -52,7 +52,7 @@ export const formMachine = Machine({
         onDone: {
           target: "gen_pdf",
           actions: assign({
-            docx_key: (_, event) => event.data.srcKey,
+            docx_key: (_, event) => event.data.Key,
             docx_link: (_, event) => event.data.Location
           })
         },
