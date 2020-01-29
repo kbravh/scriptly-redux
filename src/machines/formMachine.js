@@ -2,20 +2,29 @@ import {
   Machine,
   assign
 } from 'xstate'
+import axios from 'axios'
+import {preparePacket} from '../util'
 
 // Convert functions
-const generateDocx = (context, event) => {
+const generateDocx = (context, _) => {
+  console.log(`preparing packet`)
+  const packet = preparePacket(context.form)
   console.log(`generating docx`)
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {resolve(`https://google.com`)}, 1000)
-  })
+  console.table(packet)
+  return axios.post(
+    `https://api/.laborforzion.com/scriptly/docx`,
+    packet,
+    { headers: { 'Content-Type': 'application/json', 'x-api-key': 'gKd0oWv9oa5sut9xpYQfJ5MwKk7ZHYsM9Iqn5HIB' } }
+  ).then(response => JSON.parse(response.data.body))
 }
 
-const generatePDF = (context, event) => {
+const generatePDF = (context, _) => {
   console.log(`generating pdf`)
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {resolve(`https://google.com`)}, 2000)
-  })
+  return axios.post(
+    `https://api.laborforzion.com/scriptly/pdf`,
+    context.docx_link,
+    { headers: { 'Content-Type': 'application/json', 'x-api-key': 'gKd0oWv9oa5sut9xpYQfJ5MwKk7ZHYsM9Iqn5HIB' } }
+  ).then(response => JSON.parse(response.data.body))
 }
 
 export const formMachine = Machine({
@@ -43,7 +52,8 @@ export const formMachine = Machine({
         onDone: {
           target: "gen_pdf",
           actions: assign({
-            docx_link: (_, event) => event.data
+            docx_key: (_, event) => event.data.srcKey,
+            docx_link: (_, event) => event.data.Location
           })
         },
         onError: "error_docx"
@@ -56,7 +66,7 @@ export const formMachine = Machine({
         onDone: {
           target: "success",
           actions: assign({
-            pdf_link: (_, event) => event.data
+            pdf_link: (_, event) => event.data.Location
           })
         },
         onError: "error_pdf"
