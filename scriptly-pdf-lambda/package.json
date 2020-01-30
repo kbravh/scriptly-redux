@@ -1,0 +1,13 @@
+{
+  "name": "docx-to-pdf-on-lambda",
+  "version": "1.0.0",
+  "description": "Microsoft Word doc/docx to PDF conversion, using S3 buckets",
+  "main": "index.js",
+  "author": "@kbravh",
+  "license": "MIT",
+  "dependencies": {
+    "aws-sdk": "^2.382.0",
+    "lambda-log": "^2.1.0",
+    "@shelf/aws-lambda-libreoffice": "^3.0.0"
+  }
+}
