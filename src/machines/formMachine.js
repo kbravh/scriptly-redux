@@ -3,7 +3,9 @@ import {
   assign
 } from 'xstate'
 import axios from 'axios'
-import {preparePacket} from '../util'
+import {
+  preparePacket
+} from '../util'
 
 // Convert functions
 const generateDocx = (context, _) => {
@@ -13,8 +15,12 @@ const generateDocx = (context, _) => {
   console.table(packet)
   return axios.post(
     `https://api.laborforzion.com/scriptly/docx`,
-    packet,
-    { headers: { 'Content-Type': 'application/json', 'x-api-key': 'gKd0oWv9oa5sut9xpYQfJ5MwKk7ZHYsM9Iqn5HIB' } }
+    packet, {
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': 'gKd0oWv9oa5sut9xpYQfJ5MwKk7ZHYsM9Iqn5HIB'
+      }
+    }
   ).then(response => JSON.parse(response.data.body))
 }
 
@@ -23,7 +29,12 @@ const generatePDF = (context, _) => {
   return axios.post(
     `https://api.laborforzion.com/scriptly/pdf`,
     {srcKey: context.docx_key},
-    { headers: { 'Content-Type': 'application/json', 'x-api-key': 'gKd0oWv9oa5sut9xpYQfJ5MwKk7ZHYsM9Iqn5HIB' } }
+    {
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': 'gKd0oWv9oa5sut9xpYQfJ5MwKk7ZHYsM9Iqn5HIB'
+      }
+    }
   ).then(response => JSON.parse(response.data.body))
 }
 
@@ -71,10 +82,6 @@ export const formMachine = Machine({
         },
         onError: "error_pdf"
       },
-      "on": {
-        "ERROR_PDF": "error_pdf",
-        "SUCCESS_PDF": "success"
-      }
     },
     "error_docx": {
       "on": {
@@ -82,7 +89,9 @@ export const formMachine = Machine({
       }
     },
     "error_pdf": {
-      "RETRY_PDF": "gen_pdf"
+      "on": {
+        "RETRY": "gen_pdf"
+      }
     },
     "success": {}
   }

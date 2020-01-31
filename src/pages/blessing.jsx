@@ -18,6 +18,8 @@ const Blessing = () => {
       <pre>{JSON.stringify(state.context,null, 2)}</pre>
       {state.matches(`form`) && <BlessingForm send={send} />}
       {state.matches(`gen_docx`) && <div>Generating docx</div>}
+      {state.matches(`error_docx`) && <button onClick={() => send(`RETRY`)}>Retry DOCX</button>}
+      {state.matches(`error_pdf`) && <button onClick={() => send(`RETRY`)}>Retry PDF</button>}
       {state.matches(`gen_pdf`) && <div>Generating pdf</div>}
       {state.matches(`success`) && (
         <section>
