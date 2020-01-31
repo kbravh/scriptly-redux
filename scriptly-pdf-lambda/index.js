@@ -20,7 +20,7 @@ exports.handler = async (event, context) => {
   if(/.*docx$/.test(srcKey)){
     return {
       statusCode: 400,
-      err: `Invalid key`
+      errorMessage: `Invalid document type provided`
     }
   }
   //the destination file will have the same name with pdf extension
@@ -68,7 +68,8 @@ exports.handler = async (event, context) => {
   } catch (err) {
     log.error(err)
     response = {
-      statusCode: 400,
+      statusCode: 500,
+      errorMessage: `Unknown error has occurred`,
       body: JSON.stringify(err)
     }
   }
