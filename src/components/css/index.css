@@ -34,6 +34,19 @@ body {
   /* Add styling for on click */
 }
 
+.secondary-button {
+  border: none;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  box-shadow: #00000066 2px 2px;
+  text-transform: uppercase;
+  background-color: var(--brand-color);
+  color: var(--background-color);
+  transition: all 0.25s ease-out;
+  font-family: Alata, sans-serif;
+}
+
 /* Index page */
 
 main {

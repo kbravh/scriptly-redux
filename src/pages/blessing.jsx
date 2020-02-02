@@ -15,16 +15,15 @@ const Blessing = () => {
     <Layout>
       <SEO title="Blessing Form" />
       <h5>{state.value}</h5>
-      <pre>{JSON.stringify(state.context,null, 2)}</pre>
       {state.matches(`form`) && <BlessingForm send={send} />}
       {state.matches(`gen_docx`) && <div>Generating docx</div>}
-      {state.matches(`error_docx`) && <button onClick={() => send(`RETRY`)}>Retry DOCX</button>}
-      {state.matches(`error_pdf`) && <button onClick={() => send(`RETRY`)}>Retry PDF</button>}
+      {state.matches(`error_docx`) && <button className="action-button" onClick={() => send(`RETRY`)}>Retry DOCX</button>}
+      {state.matches(`error_pdf`) && <button className="action-button" onClick={() => send(`RETRY`)}>Retry PDF</button>}
       {state.matches(`gen_pdf`) && <div>Generating pdf</div>}
       {state.matches(`success`) && (
         <section>
-          <a href={docx_link} download>Download docx</a>
-          <a href={pdf_link} download>Download pdf</a>
+          <a className="action-button" href={docx_link} download>Download docx</a>
+          <a className="action-button" href={pdf_link} download>Download pdf</a>
         </section>
       )}
     </Layout>
