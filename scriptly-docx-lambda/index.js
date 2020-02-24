@@ -49,7 +49,7 @@ exports.handler = async (event) => {
             error: e
         }));
         throw {
-            message: `Document render was unsuccessful!`,
+            message: `Processing error! Document render was unsuccessful!`,
             error
         };
     }
@@ -82,7 +82,7 @@ exports.handler = async (event) => {
     }).catch(error => {
         console.log(error)
         throw {
-            message: `Unable to upload document to bucket.`,
+            message: `Processing error! Unable to upload document to bucket.`,
             error
         }
     })
