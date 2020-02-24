@@ -48,7 +48,10 @@ exports.handler = async (event) => {
         console.log(JSON.stringify({
             error: e
         }));
-        throw error;
+        throw {
+            message: `Document render was unsuccessful!`,
+            error
+        };
     }
 
     // buf is a nodejs buffer
@@ -58,7 +61,6 @@ exports.handler = async (event) => {
         });
     console.log('buffer generated successfully')
 
-    //TODO- convert to pdf
     let time = new Date().getTime()
 
     let uploadPromise = s3.upload({
@@ -77,8 +79,12 @@ exports.handler = async (event) => {
             statusCode: 200,
             body: JSON.stringify(data)
         }
-    }).catch(err => {
-        console.log(err)
+    }).catch(error => {
+        console.log(error)
+        throw {
+            message: `Unable to upload document to bucket.`,
+            error
+        }
     })
     return response;
 };
