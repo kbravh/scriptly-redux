@@ -9,7 +9,7 @@ const s3 = new AWS.S3()
 var srcBucket = process.env.S3_BUCKET_INPUT;
 var dstBucket = process.env.S3_BUCKET_OUTPUT;
 
-exports.handler = async (event, context) => {
+exports.handler = async (event) => {
 
   //destructure the srcKey out of the incoming request
   const {
@@ -18,9 +18,8 @@ exports.handler = async (event, context) => {
   log.info(`Data from the event: ${event.bucket}:${event.srcKey}`)
 
   if(/.*docx$/.test(srcKey)){
-    return {
-      statusCode: 400,
-      errorMessage: `Invalid document type provided`
+    throw {
+      message: `Invalid document type provided.`
     }
   }
   //the destination file will have the same name with pdf extension
@@ -61,16 +60,14 @@ exports.handler = async (event, context) => {
     await uploadPromise.then(data => {
       log.info('RESULT: Success ' + dstKey);
       response = {
-        statusCode: 200,
         body: JSON.stringify(data)
       }
     })
-  } catch (err) {
-    log.error(err)
-    response = {
-      statusCode: 500,
-      errorMessage: `Unknown error has occurred`,
-      body: JSON.stringify(err)
+  } catch (error) {
+    log.error(error)
+    throw {
+      message: `Unknown error has occurred.`,
+      error
     }
   }
 
