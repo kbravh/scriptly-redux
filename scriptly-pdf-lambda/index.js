@@ -18,9 +18,7 @@ exports.handler = async (event) => {
   log.info(`Data from the event: ${event.bucket}:${event.srcKey}`)
 
   if(/.*docx$/.test(srcKey)){
-    throw {
-      message: `Invalid document type provided`
-    }
+    throw JSON.stringify({message: `Invalid document type provided`})
   }
   //the destination file will have the same name with pdf extension
   const dstKey = srcKey.replace(/docx?/, 'pdf');
@@ -65,10 +63,10 @@ exports.handler = async (event) => {
     })
   } catch (error) {
     log.error(error)
-    throw {
+    throw JSON.stringify({
       message: `Unknown error has occurred`,
       error
-    }
+    })
   }
 
   // Return a result

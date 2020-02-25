@@ -48,10 +48,10 @@ exports.handler = async (event) => {
         console.log(JSON.stringify({
             error: e
         }));
-        throw {
+        throw JSON.stringify({
             message: `Processing error! Document render was unsuccessful!`,
             error
-        };
+        });
     }
 
     // buf is a nodejs buffer
@@ -81,10 +81,10 @@ exports.handler = async (event) => {
         }
     }).catch(error => {
         console.log(error)
-        throw {
+        throw JSON.stringify({
             message: `Processing error! Unable to upload document to bucket.`,
             error
-        }
+        })
     })
     return response;
 };
