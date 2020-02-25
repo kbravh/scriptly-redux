@@ -1,11 +1,12 @@
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
+import {motion} from 'framer-motion'
 
 import './css/header.css'
 
 const Header = ({ siteTitle }) => (
-  <header>
+  <motion.header initial={{y: -100, opacity: 0}} animate={{y: 0, opacity: 1}} transition={{duration: .75}}>
     <nav>
       <h1>
         <Link className="brand-logo" to="/" >
@@ -16,7 +17,7 @@ const Header = ({ siteTitle }) => (
         </Link>
       </h1>
     </nav>
-  </header>
+  </motion.header>
 )
 
 Header.propTypes = {
