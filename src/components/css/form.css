@@ -1,3 +1,10 @@
+.blessing-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .blessing-form {
   display: flex;
   flex-direction: column;
@@ -8,17 +15,21 @@
   margin-top: 20px;
 }
 
-.blessing-form > * {
+.blessing-form>* {
   margin-bottom: 20px;
   border: none;
 }
 
-.blessing-form > *:nth-last-child(1) {
+.blessing-form>*:nth-last-child(1) {
   margin-bottom: 0;
 }
 
 .blessing-form h5 {
   margin-bottom: 5px;
+}
+
+.form-div {
+  max-width: 410px;
 }
 
 .blessing-form input {
