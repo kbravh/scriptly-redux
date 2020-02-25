@@ -1,0 +1,15 @@
+section {
+  text-align: center;
+  padding: 10px;
+}
+
+#final-download {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+#final-download .action-button {
+  flex-grow: 1;
+  margin: 20px;
+}
