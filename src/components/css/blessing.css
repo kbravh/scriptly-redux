@@ -3,6 +3,12 @@ section {
   padding: 10px;
 }
 
+.blessing-page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 #final-download {
   display: flex;
   flex-wrap: wrap;

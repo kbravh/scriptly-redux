@@ -2,12 +2,30 @@ import React, { useEffect } from 'react'
 import gsap, { Bounce } from 'gsap'
 import { useMachine } from '@xstate/react'
 import { formMachine } from '../machines/formMachine'
+import { motion, AnimatePresence } from 'framer-motion'
 
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 import BlessingForm from '../components/blessing-form'
 
 import '../components/css/blessing.css'
+
+// intro and outro animation settings
+const variants = {
+  hidden: {
+    x: 100,
+    opacity: 0
+  },
+  visible: {
+    x: 0,
+    opacity: 1
+  }
+}
+
+const exit = {
+  x: -100,
+  opacity: 0
+}
 
 const Blessing = () => {
   const [state, send] = useMachine(formMachine)
@@ -16,30 +34,50 @@ const Blessing = () => {
   return (
     <Layout>
       <SEO title="Blessing Form" />
-      {state.matches(`form`) && <BlessingForm send={send} />}
-      {state.matches(`gen_docx`) && <GeneratingDocx />}
-      {state.matches(`error_docx`) && (
-        <section>
-          <h4>Uh oh, it seems like an error occurred. Try again?</h4>
-          <button className="action-button" onClick={() => send(`RETRY`)}>Retry DOCX</button>
-        </section>
-      )}
-      {state.matches(`error_pdf`) && (
-      <section>
-        <h4>Uh oh, it seems like an error occurred while making the PDF. Try again?</h4>
-        <button className="action-button" onClick={() => send(`RETRY`)}>Retry PDF</button>
-        <h5>You can still download the Word document here for now.</h5>
-        <a className="action-button" href={docx_link} download>Download docx</a>
-      </section>
-      )}
-      {state.matches(`gen_pdf`) && <h3>Generating PDF...</h3>}
-      {state.matches(`success`) && (
-        <section id="final-download">
-          <h4>Congrats! Here are the download links for your blessing as a Word document and a PDF. These links will expire in 24 hours.</h4>
-          <a className="action-button" href={docx_link} download>Download docx</a>
-          <a className="action-button" href={pdf_link} download>Download pdf</a>
-        </section>
-      )}
+      <AnimatePresence exitBeforeEnter>
+        {state.matches(`form`) && (
+          <motion.div className="blessing-page-container" key="blessing-form" initial="hidden" animate="visible" variants={variants} exit={exit}>
+            <BlessingForm send={send} />
+          </motion.div>
+        )}
+        {state.matches(`gen_docx`) && (
+          <motion.div className="blessing-page-container" key="generating-docx" initial="hidden" animate="visible" variants={variants} exit={exit}>
+            <GeneratingDocx />
+          </motion.div>
+        )}
+        {state.matches(`error_docx`) && (
+          <motion.div className="blessing-page-container" key="error-docx" initial="hidden" animate="visible" variants={variants} exit={exit}>
+            <section>
+              <h4>Uh oh, it seems like an error occurred. Try again?</h4>
+              <button className="action-button" onClick={() => send(`RETRY`)}>Retry DOCX</button>
+            </section>
+          </motion.div>
+        )}
+        {state.matches(`error_pdf`) && (
+          <motion.div className="blessing-page-container" key="error-pdf" initial="hidden" animate="visible" variants={variants} exit={exit}>
+            <section>
+              <h4>Uh oh, it seems like an error occurred while making the PDF. Try again?</h4>
+              <button className="action-button" onClick={() => send(`RETRY`)}>Retry PDF</button>
+              <h5>You can still download the Word document here for now.</h5>
+              <a className="action-button" href={docx_link} download>Download docx</a>
+            </section>
+          </motion.div>
+        )}
+        {state.matches(`gen_pdf`) && (
+          <motion.div className="blessing-page-container" key="gen-pdf" initial="hidden" animate="visible" variants={variants} exit={exit}>
+            <h3>Generating PDF...</h3>
+          </motion.div>
+        )}
+        {state.matches(`success`) && (
+          <motion.div className="blessing-page-container" key="success" initial="hidden" animate="visible" variants={variants} exit={exit}>
+            <section id="final-download">
+              <h4>Congrats! Here are the download links for your blessing as a Word document and a PDF. These links will expire in 24 hours.</h4>
+              <a className="action-button" href={docx_link} download>Download docx</a>
+              <a className="action-button" href={pdf_link} download>Download pdf</a>
+            </section>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </Layout>
   )
 }

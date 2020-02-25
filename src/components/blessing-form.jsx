@@ -4,7 +4,6 @@ import * as Yup from 'yup'
 import Toggle from 'react-toggle'
 import '../components/css/toggle.css'
 import Calendar from 'react-calendar'
-import { motion, AnimatePresence } from 'framer-motion'
 
 import 'react-calendar/dist/Calendar.css';
 
@@ -26,8 +25,7 @@ const BlessingForm = ({ send }) => {
   }, []) // pass empty array; we only need this to run once
 
   return (
-    <AnimatePresence>
-    <motion.div className="blessing-page" initial="hidden" animate="visible" exit={{x: -100, opacity: 0}} variants={{hidden:{x:100, opacity:1}, visible:{x:0, opacity:1}}}>
+    <>
       <h2 style={{ textAlign: 'center' }}>Enter your patriarchal blessing information below.</h2>
       <div className="form-div">
         <Formik
@@ -122,8 +120,7 @@ const BlessingForm = ({ send }) => {
           )}
         </Formik>
       </div>
-    </motion.div>
-    </AnimatePresence>
+    </>
   )
 }
 
