@@ -17,7 +17,7 @@ exports.handler = async (event) => {
   } = event;
   log.info(`Data from the event: ${event.bucket}:${event.srcKey}`)
 
-  if(/.*docx$/.test(srcKey)){
+  if(!/.*docx$/.test(srcKey)){
     throw JSON.stringify({message: `Invalid document type provided`})
   }
   //the destination file will have the same name with pdf extension
