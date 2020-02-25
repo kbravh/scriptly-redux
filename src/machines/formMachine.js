@@ -9,10 +9,7 @@ import {
 
 // Convert functions
 const generateDocx = (context, _) => {
-  console.log(`preparing packet`)
   const packet = preparePacket(context.form)
-  console.log(`generating docx`)
-  console.table(packet)
   return axios.post(
     `https://api.laborforzion.com/scriptly/docx`,
     packet, {
@@ -25,7 +22,6 @@ const generateDocx = (context, _) => {
 }
 
 const generatePDF = (context, _) => {
-  console.log(`generating pdf`)
   return axios.post(
     `https://api.laborforzion.com/scriptly/pdf`,
     {srcKey: context.docx_key},

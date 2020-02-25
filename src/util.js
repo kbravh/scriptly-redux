@@ -61,8 +61,6 @@ const getMemberTitle = (gender) => {
 }
 
 export const preparePacket = data => {
-  console.log(`Preparing packet`)
-  console.table(data)
   const [blessingFirstLetter, blessing] = splitBlessing(data.blessing)
   return {
     firstName: data.firstName.toUpperCase(),
