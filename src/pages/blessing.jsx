@@ -27,12 +27,12 @@ const exit = {
   opacity: 0
 }
 
-const Blessing = () => {
+const Blessing = ({location}) => {
   const [state, send] = useMachine(formMachine)
   const { docx_link, pdf_link } = state.context
 
   return (
-    <Layout>
+    <Layout location={location}>
       <SEO title="Blessing Form" />
       <AnimatePresence exitBeforeEnter>
         {state.matches(`form`) && (

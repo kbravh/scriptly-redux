@@ -5,8 +5,12 @@ import {motion} from 'framer-motion'
 
 import './css/header.css'
 
-const Header = ({ siteTitle }) => (
-  <motion.header initial={{y: -100, opacity: 0}} animate={{y: 0, opacity: 1}} transition={{duration: .75}}>
+const Header = ({ siteTitle, location }) => (
+  <motion.header
+    initial={location.pathname === '/' ? {y: -100, opacity: 0} : false}
+    animate={{y: 0, opacity: 1}}
+    transition={{duration: .75}}
+  >
     <nav>
       <h1>
         <Link className="brand-logo" to="/" >

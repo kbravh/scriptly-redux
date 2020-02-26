@@ -8,9 +8,9 @@ import { motion} from 'framer-motion'
 
 import '../components/css/index.css'
 
-const IndexPage = () => {
+const IndexPage = ({location}) => {
   return (
-    <Layout>
+    <Layout location={location}>
       <SEO title="Home" />
       <motion.div className="home" key="home"
         initial="hidden"
