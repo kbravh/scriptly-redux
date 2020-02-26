@@ -19,6 +19,12 @@ module.exports = {
         dsn: "https://67e863347a06470ca38859621a7f5830@sentry.io/2877175",
       }
     },
+    {
+      resolve: `gatsby-plugin-layout`,
+      options: {
+        component: require.resolve(`./src/components/layout.jsx`)
+      }
+    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {

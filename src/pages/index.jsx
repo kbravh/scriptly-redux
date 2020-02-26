@@ -1,16 +1,15 @@
 import React from "react"
 import { Link } from "gatsby"
 
-import Layout from "../components/layout"
 import SEO from "../components/seo"
 import DocPreview from '../components/doc-preview'
-import { motion} from 'framer-motion'
+import { motion } from 'framer-motion'
 
 import '../components/css/index.css'
 
-const IndexPage = ({location}) => {
+const IndexPage = () => {
   return (
-    <Layout location={location}>
+    <>
       <SEO title="Home" />
       <motion.div className="home" key="home"
         initial="hidden"
@@ -30,7 +29,7 @@ const IndexPage = ({location}) => {
         <DocPreview />
       </motion.div>
       <Link to="/blessing" className="action-button">Get started</Link>
-    </Layout>
+    </>
   )
 }
 

@@ -6,7 +6,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import Header from "./header"
 import "./css/layout.css"
 
-const Layout = ({ children, location }) => {
+const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -30,7 +30,7 @@ const Layout = ({ children, location }) => {
         <meta name="msapplication-config" content="/favicon/browserconfig.xml" />
         <meta name="theme-color" content="#f7f7f7" />
       </Helmet>
-      <Header siteTitle={data.site.siteMetadata.title} location={location} />
+      <Header siteTitle={data.site.siteMetadata.title} />
       <main>
         {children}
       </main>

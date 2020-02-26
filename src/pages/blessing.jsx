@@ -4,7 +4,6 @@ import { useMachine } from '@xstate/react'
 import { formMachine } from '../machines/formMachine'
 import { motion, AnimatePresence } from 'framer-motion'
 
-import Layout from '../components/layout'
 import SEO from '../components/seo'
 import BlessingForm from '../components/blessing-form'
 
@@ -27,12 +26,12 @@ const exit = {
   opacity: 0
 }
 
-const Blessing = ({location}) => {
+const Blessing = () => {
   const [state, send] = useMachine(formMachine)
   const { docx_link, pdf_link } = state.context
 
   return (
-    <Layout location={location}>
+    <>
       <SEO title="Blessing Form" />
       <AnimatePresence exitBeforeEnter>
         {state.matches(`form`) && (
@@ -80,7 +79,7 @@ const Blessing = ({location}) => {
           </motion.div>
         )}
       </AnimatePresence>
-    </Layout>
+    </>
   )
 }
 
