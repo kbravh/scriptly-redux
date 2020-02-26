@@ -5,7 +5,15 @@ import {motion} from 'framer-motion'
 
 import './css/header.css'
 
-const Header = ({ siteTitle, location }) => (
+const Header = ({ siteTitle, location }) => {
+  // TODO - find a better workaround for this, like null coalescing
+  if(!location || !location.pathname){
+    location = {
+      pathname: 'SSR'
+    }
+  }
+
+  return (
   <motion.header
     initial={location.pathname === '/' ? {y: -100, opacity: 0} : false}
     animate={{y: 0, opacity: 1}}
@@ -22,7 +30,7 @@ const Header = ({ siteTitle, location }) => (
       </h1>
     </nav>
   </motion.header>
-)
+)}
 
 Header.propTypes = {
   siteTitle: PropTypes.string,
