@@ -27,7 +27,7 @@ const Header = ({ siteTitle }) => {
           }}
           whileTap={{ scale: 0.9 }}
         >
-          <Link to="/faq">FAQs</Link>
+          <Link to="/faq" activeStyle={{borderBottom: `3px solid var(--background-color)`}}>FAQs</Link>
         </motion.h3>
       </nav>
     </motion.header>
