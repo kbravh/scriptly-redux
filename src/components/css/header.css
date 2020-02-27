@@ -9,18 +9,23 @@ nav {
   padding: 1.45rem 1.0875rem;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
   max-width: 960px;
   width: 100%;
 }
 
-nav h1 {
+nav h1,
+nav h3 {
+  width: fit-content;
   margin: 0;
 }
 
-.brand-logo {
+nav a{
   color: var(--background-color);
   text-decoration: none;
+}
+
+.brand-logo {
   display: flex;
   align-items: center;
 }

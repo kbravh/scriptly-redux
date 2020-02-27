@@ -21,6 +21,7 @@ const Header = ({ siteTitle }) => {
             {siteTitle}
           </Link>
         </h1>
+        <h3><Link to="/faq">FAQs</Link></h3>
       </nav>
     </motion.header>
   )
