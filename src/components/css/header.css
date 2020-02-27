@@ -25,9 +25,17 @@ nav a{
   text-decoration: none;
 }
 
+nav a:hover {
+  border-bottom: 3px solid var(--background-color);
+}
+
 .brand-logo {
   display: flex;
   align-items: center;
+}
+
+.brand-logo:hover {
+  border-bottom: none;
 }
 
 #scriptly-logo {
