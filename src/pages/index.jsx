@@ -28,7 +28,18 @@ const IndexPage = () => {
         </div>
         <DocPreview />
       </motion.div>
-      <Link to="/blessing" className="action-button">Get started</Link>
+      <motion.div key="get-started"
+        initial="hidden"
+        animate="visible"
+        exit={{ y: 100, opacity: 0 }}
+        variants={{
+          hidden: { y: 100, opacity: 0 },
+          visible: { y: 0, opacity: 1 }
+        }}
+        transition={{ duration: .75 }}
+      >
+        <Link to="/blessing" className="action-button">Get started</Link>
+      </motion.div>
     </>
   )
 }
