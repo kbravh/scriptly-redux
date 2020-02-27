@@ -41,17 +41,6 @@ module.exports = {
         ]
       }
     },
-    {
-      resolve: `gatsby-plugin-manifest`,
-      options: {
-        name: `scriptly`,
-        short_name: `scriptly`,
-        start_url: `/`,
-        background_color: `#F7F7F7`,
-        theme_color: `#102542`,
-        display: `minimal-ui`,
-      },
-    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     `gatsby-plugin-offline`,
