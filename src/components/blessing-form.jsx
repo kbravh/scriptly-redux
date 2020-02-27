@@ -96,7 +96,7 @@ const BlessingForm = ({ send }) => {
               <ErrorMessage name="patriarch" component="div" className="error-box" />
 
               <h5>Stake or District</h5>
-              <Field type="text" name="stake" placeholder="Stake or District" />
+              <Field type="text" name="stake" placeholder="Aurora Colorado" />
               <ErrorMessage name="stake" component="div" className="error-box" />
 
               <h5>Date of the Blessing</h5>
