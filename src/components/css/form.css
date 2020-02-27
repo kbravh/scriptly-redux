@@ -30,12 +30,6 @@
   padding: 5px;
 }
 
-@media only screen and (max-width: 475px) {
-  main {
-    margin: 70px 30px;
-  }
-}
-
 .gender-toggle {
   display: flex;
   flex-direction: row;

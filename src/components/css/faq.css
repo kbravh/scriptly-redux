@@ -1,6 +1,11 @@
+.faq-header {
+  text-align: center;
+}
+
 .faq-list {
   max-width: 960px;
   list-style-type: disc;
+  padding: 10px;
 }
 
 .contact-me {
@@ -8,6 +13,9 @@
   background-color: var(--brand-color);
   padding: 15px;
   border-radius: 5px;
+  text-align: center;
+  opacity: 0.8;
+  margin: 40px 10px 10px 10px;
 }
 
 .contact-me a {

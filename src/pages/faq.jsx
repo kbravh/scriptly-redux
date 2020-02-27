@@ -4,7 +4,7 @@ import '../components/css/faq.css'
 
 const FAQ = () => (
   <>
-    <h1>Frequently Asked Questions</h1>
+    <h1 className="faq-header">Frequently Asked Questions</h1>
     <ul className="faq-list">
       <li>
         <h3>Is my patriarchal blessing going to be seen by anyone else?</h3>
