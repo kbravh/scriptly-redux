@@ -78,3 +78,11 @@
 .first-letter {
   font-size: 10px;
 }
+
+@media only screen and (max-width: 800px) {
+  .doc-preview {
+    transform: scale(0.8);
+    margin-top: -40px;
+    margin-bottom: -15px;
+  }
+}
