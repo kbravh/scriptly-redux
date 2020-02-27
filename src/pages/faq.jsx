@@ -11,6 +11,9 @@ const FAQ = () => (
         <p>This is a completely automated process, so no one sees your patriarchal blessing at any point. Your documents will automatically be erased after 24 hours for more security.</p>
       </li>
     </ul>
+    <div className="contact-me">
+      Have a question or comment? Contact me at <a href="mailto:info@laborforzion.com">info@laborforzion.com</a>
+    </div>
   </>
 )
 

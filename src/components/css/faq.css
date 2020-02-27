@@ -2,3 +2,14 @@
   max-width: 960px;
   list-style-type: disc;
 }
+
+.contact-me {
+  color: var(--background-color);
+  background-color: var(--brand-color);
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.contact-me a {
+  color: var(--background-color);
+}
