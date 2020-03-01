@@ -1,21 +1,22 @@
+var AWS = require('aws-sdk');
 const dayjs = require('dayjs')
 const localizedFormat = require('dayjs/plugin/localizedFormat')
 dayjs.extend(localizedFormat)
 
+AWS.config.update({
+    region: 'us-east-1'
+})
+var s3 = new AWS.S3({
+    apiVersion: '2006-03-01'
+});
+
+var PizZip = require('pizzip');
+var Docxtemplater = require('docxtemplater');
+
+var fs = require('fs');
+var path = require('path');
+
 exports.handler = async (event) => {
-    var AWS = require('aws-sdk');
-    AWS.config.update({
-        region: 'us-east-1'
-    })
-    var s3 = new AWS.S3({
-        apiVersion: '2006-03-01'
-    });
-
-    var PizZip = require('pizzip');
-    var Docxtemplater = require('docxtemplater');
-
-    var fs = require('fs');
-    var path = require('path');
 
     //Load the docx file as a binary
     var content = fs.readFileSync(path.resolve(__dirname, `${event.template}.docx`), 'binary');
