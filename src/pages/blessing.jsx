@@ -72,8 +72,8 @@ const Blessing = () => {
             <section id="final-download">
               <h4>Congrats! Here are the download links for your blessing as a Word document and a PDF. These links will expire in 24 hours.</h4>
               <div className="download-links">
-                <a className="action-button" href={docx_link} download>Download docx</a>
-                <a className="action-button" href={pdf_link} download>Download pdf</a>
+                <a className="action-button" href={docx_link} download target="_blank" rel="noopener noreferrer">Download docx</a>
+                <a className="action-button" href={pdf_link} download target="_blank" rel="noopener noreferrer">Download pdf</a>
               </div>
             </section>
           </motion.div>
