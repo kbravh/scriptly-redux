@@ -12,7 +12,7 @@ const getParentage = (motherName, fatherName, gender) => {
   let parentage = ","
   let father = fatherName !== ""
   let mother = motherName !== ""
-  let child = gender === "Female" ? ' daughter' : ' son'
+  let child = gender  ? ' son' : ' daughter'
 
   if (!father && !mother) {
     return ""
