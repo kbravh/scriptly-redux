@@ -1,3 +1,7 @@
+const dayjs = require('dayjs')
+const localizedFormat = require('dayjs/plugin/localizedFormat')
+dayjs.extend(localizedFormat)
+
 exports.handler = async (event) => {
     var AWS = require('aws-sdk');
     AWS.config.update({
@@ -32,7 +36,7 @@ exports.handler = async (event) => {
         blessingFirstLetter: event.blessingFirstLetter,
         blessing: event.blessing,
         memberTitle: event.memberTitle,
-        blessingDate: event.blessingDate
+        blessingDate: dayjs(event.blessingDate).format('LL')
     });
 
     try {

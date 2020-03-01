@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "dayjs": "^1.8.21",
     "docxtemplater": "^3.14.1",
     "pizzip": "^3.0.6"
   }
