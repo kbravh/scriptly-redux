@@ -151,7 +151,7 @@ const GeneratingPDF = () => {
   useEffect(() => {
     setTimeout(() => {
       setLoader(loadingMessages[randomNum(0, loadingMessages.length-1)])
-    }, 10000)
+    }, 7000)
   }, [setLoader])
 
   useEffect(() => {
