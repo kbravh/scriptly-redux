@@ -1,8 +1,10 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import gsap, { Bounce } from 'gsap'
 import { useMachine } from '@xstate/react'
 import { formMachine } from '../machines/formMachine'
 import { motion, AnimatePresence } from 'framer-motion'
+
+import { randomNum } from '../util'
 
 import SEO from '../components/seo'
 import BlessingForm from '../components/blessing-form'
@@ -25,6 +27,12 @@ const exit = {
   x: -100,
   opacity: 0
 }
+
+const loadingMessages = [
+  `Cross-referencing verses`,
+  `Engraving plates`,
+  `Consulting Liahona`
+]
 
 const Blessing = () => {
   const [state, send] = useMachine(formMachine)
@@ -121,7 +129,7 @@ const GeneratingDocx = () => {
   }, [tl])
   return (
     <>
-      <h2>Generating Document</h2>
+      <h2>Writing scriptures...</h2>
       <svg id="writing" style={{ width: "100px" }} xmlns="http://www.w3.org/2000/svg" viewBox="0 -40 90.4 120">
         <path id="inkpot" d="M68.1 56.8a1.8 1.8 0 100 3.6h.8v4.2c-3.7.3-5.8 2-5.8 4.6v4.3c0 1 .8 1.8 1.8 1.8h14c1 0 1.9-.8 1.9-1.8v-5.4c0-1.2-.6-3-3.9-3.6v8h-2V60.3h.9a1.8 1.8 0 000-3.6z" />
         <path id="inkdrop" d="m 73.793574,59.881877 a 1.6,1.6 0 0 1 -3.2,0 c 0,-0.9 1,-1.8 1.6,-3.1 0.6,1.3 1.6,2.2 1.6,3.1 z" />
@@ -135,6 +143,14 @@ const GeneratingDocx = () => {
 }
 
 const GeneratingPDF = () => {
+  const [loader, setLoader] = useState(loadingMessages[0])
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoader(loadingMessages[randomNum(0, loadingMessages.length)])
+    }, 10000)
+  }, [setLoader])
+
   useEffect(() => {
     gsap.to('#scroll', {
       duration: 1,
@@ -207,7 +223,7 @@ const GeneratingPDF = () => {
   }, [])
   return (
     <>
-      <h2>Generating PDF</h2>
+      <h2>{loader}...</h2>
       <svg id="magic-scroll" style={{ width: "100px" }} xmlns="http://www.w3.org/2000/svg" viewBox="-10 0 70 100">
         <defs />
         <switch transform="matrix(.54567 0 0 .54567 -2.5 39.5)">
@@ -218,18 +234,17 @@ const GeneratingPDF = () => {
         <path id="star-1" d="M6 37a1 1 0 001 1 3 3 0 013 3 1 1 0 002 0 3 3 0 013-3 1 1 0 000-2 3 3 0 01-3-3 1 1 0 00-2 0 3 3 0 01-3 3 1 1 0 00-1 1zm5-1a5 5 0 001 1 5 5 0 00-1 1 5 5 0 00-1-1 5 5 0 001-1z" />
         <path id="star-2" d="M28 4a3 3 0 01-3-3 1 1 0 00-2 0 3 3 0 01-3 3 1 1 0 000 2 3 3 0 013 3 1 1 0 002 0 3 3 0 013-3 1 1 0 000-2zm-4 2a5 5 0 00-1-1 5 5 0 001-1 5 5 0 001 1 5 5 0 00-1 1z" />
         <path id="star-3" d="M39 27a1 1 0 001 1 3 3 0 013 3 1 1 0 002 0 3 3 0 013-3 1 1 0 000-2 3 3 0 01-3-3 1 1 0 00-2 0 3 3 0 01-3 3 1 1 0 00-1 1zm5-1a5 5 0 001 1 5 5 0 00-1 1 5 5 0 00-1-1 5 5 0 001-1z" />
-        <path style={{opacity: 0}} id="dot-1" d="M0 37h2v2H0z" />
-        <path style={{opacity: 0}} id="dot-2" d="M9 27h2v2H9z" />
-        <path style={{opacity: 0}} id="dot-3" d="M19 42h2v2h-2z" />
-        <path style={{opacity: 0}} id="dot-4" d="M21 24h2v2h-2z" />
-        <path style={{opacity: 0}} id="dot-5" d="M24 27h2v2h-2z" />
-        <path style={{opacity: 0}} id="dot-6" d="M35 32h2v2h-2z" />
-        <path style={{opacity: 0}} id="dot-7" d="M35 19h2v2h-2z" />
-        <path id="circle-1" style={{opacity: 0}} d="M4 20a3 3 0 103 3 3 3 0 00-3-3zm0 4a1 1 0 111-1 1 1 0 01-1 1z" />
-        <path id="circle-2" style={{opacity: 0}} d="M28 40a3 3 0 103-3 3 3 0 00-3 3zm4 0a1 1 0 11-1-1 1 1 0 011 1z" />
-        <path id="circle-3" style={{opacity: 0}} d="M45 16a3 3 0 10-3-3 3 3 0 003 3zm0-4a1 1 0 11-1 1 1 1 0 011-1z" />
+        <path style={{ opacity: 0 }} id="dot-1" d="M0 37h2v2H0z" />
+        <path style={{ opacity: 0 }} id="dot-2" d="M9 27h2v2H9z" />
+        <path style={{ opacity: 0 }} id="dot-3" d="M19 42h2v2h-2z" />
+        <path style={{ opacity: 0 }} id="dot-4" d="M21 24h2v2h-2z" />
+        <path style={{ opacity: 0 }} id="dot-5" d="M24 27h2v2h-2z" />
+        <path style={{ opacity: 0 }} id="dot-6" d="M35 32h2v2h-2z" />
+        <path style={{ opacity: 0 }} id="dot-7" d="M35 19h2v2h-2z" />
+        <path id="circle-1" style={{ opacity: 0 }} d="M4 20a3 3 0 103 3 3 3 0 00-3-3zm0 4a1 1 0 111-1 1 1 0 01-1 1z" />
+        <path id="circle-2" style={{ opacity: 0 }} d="M28 40a3 3 0 103-3 3 3 0 00-3 3zm4 0a1 1 0 11-1-1 1 1 0 011 1z" />
+        <path id="circle-3" style={{ opacity: 0 }} d="M45 16a3 3 0 10-3-3 3 3 0 003 3zm0-4a1 1 0 11-1 1 1 1 0 011-1z" />
       </svg>
-      <h4>This will take about 30 seconds!</h4>
     </>
   )
 }
