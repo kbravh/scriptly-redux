@@ -4,6 +4,7 @@ import * as Yup from 'yup'
 import Toggle from 'react-toggle'
 import '../components/css/toggle.css'
 import Calendar from 'react-calendar'
+import {motion} from 'framer-motion'
 
 import 'react-calendar/dist/Calendar.css';
 
@@ -115,7 +116,7 @@ const BlessingForm = ({ send }) => {
               <Field as="textarea" name="blessing" placeholder="Patriarchal Blessing" style={{ resize: 'vertical' }} />
               <ErrorMessage name="blessing" component="div" className="error-box" />
 
-              <button className="action-button" type="submit" disabled={isSubmitting}>Generate Document</button>
+              <motion.button whileTap={{scale: 0.9}} className="action-button" type="submit" disabled={isSubmitting}>Generate Document</motion.button>
             </Form>
           )}
         </Formik>
