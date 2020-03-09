@@ -229,6 +229,7 @@ const GeneratingPDF = () => {
         <path id="circle-2" style={{opacity: 0}} d="M28 40a3 3 0 103-3 3 3 0 00-3 3zm4 0a1 1 0 11-1-1 1 1 0 011 1z" />
         <path id="circle-3" style={{opacity: 0}} d="M45 16a3 3 0 10-3-3 3 3 0 003 3zm0-4a1 1 0 11-1 1 1 1 0 011-1z" />
       </svg>
+      <h4>This will take about 30 seconds!</h4>
     </>
   )
 }
