@@ -78,11 +78,12 @@ const Blessing = () => {
         {state.matches(`success`) && (
           <motion.div className="blessing-page-container" key="success" initial="hidden" animate="visible" variants={variants} exit={exit}>
             <section id="final-download">
-              <h4>Congrats! Here are the download links for your blessing as a Word document and a PDF. These links will expire in 24 hours.</h4>
-              <div className="download-links">
-                <a className="action-button" href={docx_link} download target="_blank" rel="noopener noreferrer">Download docx</a>
-                <a className="action-button" href={pdf_link} download target="_blank" rel="noopener noreferrer">Download pdf</a>
-              </div>
+              <h2>Congrats!</h2>
+              <h3>Here is your scripture-styled blessing.</h3>
+              <h4 className="expiry">This link will expire in 24 hours.</h4>
+              <motion.a whileTap={{scale: 0.9}} className="action-button" href={pdf_link} download target="_blank" rel="noopener noreferrer">Download pdf</motion.a>
+              <h4 className="docx-download-header">Need to make any changes? Download this Word document instead.</h4>
+              <motion.a whileTap={{scale: 0.9}} className="secondary-button" href={docx_link} download target="_blank" rel="noopener noreferrer">Download docx</motion.a>
             </section>
           </motion.div>
         )}

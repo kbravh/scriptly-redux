@@ -13,16 +13,25 @@ section {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.download-links {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  max-width: 760px;
+  max-width: 960px;
 }
 
 #final-download .action-button {
   flex-grow: 1;
   margin: 20px;
+  max-width: 300px;
+}
+
+.expiry {
+  margin: 0;
+}
+
+#final-download .docx-download-header {
+  margin: 30px 0 0 0;
+}
+
+#final-download .secondary-button {
+  flex-grow: 1;
+  margin: 20px;
+  max-width: 300px;
 }

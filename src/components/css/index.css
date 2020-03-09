@@ -28,11 +28,6 @@ body {
   font-family: Alata, sans-serif;
 }
 
-.action-button:active,
-.action-button:focus {
-  /* Add styling for on click */
-}
-
 .secondary-button {
   border: none;
   text-decoration: none;
