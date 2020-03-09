@@ -4,7 +4,7 @@ import * as Yup from 'yup'
 import Toggle from 'react-toggle'
 import '../components/css/toggle.css'
 import Calendar from 'react-calendar'
-import {motion} from 'framer-motion'
+import { motion } from 'framer-motion'
 
 import 'react-calendar/dist/Calendar.css';
 
@@ -47,7 +47,7 @@ const BlessingForm = ({ send }) => {
             blessing: Yup.string().required('This field is required')
           })}
         >
-          {({ isSubmitting, setFieldValue }) => (
+          {({ isSubmitting, setFieldValue, isValid }) => (
             <Form className="blessing-form shadow">
 
               <h5>First Name</h5>
@@ -116,7 +116,19 @@ const BlessingForm = ({ send }) => {
               <Field as="textarea" name="blessing" placeholder="Patriarchal Blessing" style={{ resize: 'vertical' }} />
               <ErrorMessage name="blessing" component="div" className="error-box" />
 
-              <motion.button whileTap={{scale: 0.9}} className="action-button" type="submit" disabled={isSubmitting}>Generate Document</motion.button>
+              {!isValid &&
+                <motion.div className="submit-form-error"
+                  initial="hidden"
+                  animate="visible"
+                  variants={{
+                    hidden: { opacity: 0, y: -20 },
+                    visible: { opacity: 1, y: 0 }
+                  }}
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-alert-circle"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                  Uh oh! You seem to be missing some parts of the form.
+              </motion.div>}
+              <motion.button whileTap={{ scale: 0.9 }} className="action-button" type="submit" disabled={isSubmitting}>Generate Document</motion.button>
             </Form>
           )}
         </Formik>

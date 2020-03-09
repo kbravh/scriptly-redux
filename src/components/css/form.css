@@ -50,3 +50,15 @@
 .optional-tag {
   color: #444;
 }
+
+.submit-form-error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-color);
+  text-align: center;
+}
+
+.submit-form-error svg {
+  margin-right: 10px;
+}
