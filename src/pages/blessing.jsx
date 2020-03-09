@@ -31,7 +31,9 @@ const exit = {
 const loadingMessages = [
   `Cross-referencing verses`,
   `Engraving plates`,
-  `Consulting Liahona`
+  `Consulting Liahona`,
+  `Drafting Chapters`,
+  `Adjusting Footnotes`
 ]
 
 const Blessing = () => {
@@ -148,7 +150,7 @@ const GeneratingPDF = () => {
 
   useEffect(() => {
     setTimeout(() => {
-      setLoader(loadingMessages[randomNum(0, loadingMessages.length)])
+      setLoader(loadingMessages[randomNum(0, loadingMessages.length-1)])
     }, 10000)
   }, [setLoader])
 
