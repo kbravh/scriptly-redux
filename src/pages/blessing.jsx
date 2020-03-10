@@ -33,7 +33,8 @@ const loadingMessages = [
   `Engraving plates`,
   `Consulting Liahona`,
   `Drafting Chapters`,
-  `Adjusting Footnotes`
+  `Adjusting Footnotes`,
+  `Aligning Headers`
 ]
 
 const Blessing = () => {
