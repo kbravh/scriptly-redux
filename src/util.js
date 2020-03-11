@@ -1,14 +1,17 @@
 export const randomNum = (min, max) => {
+  if(min >= max) {
+    throw Error('Min must be less than max')
+  }
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-const getFullName = (firstName, middleName, lastName) => {
+export const getFullName = (firstName, middleName, lastName) => {
   return middleName ?
     `${firstName} ${middleName} ${lastName}` :
     `${firstName} ${lastName}`
 }
 
-const getParentage = (motherName, fatherName, gender) => {
+export const getParentage = (motherName, fatherName, gender) => {
   let parentage = ","
   let father = fatherName !== ""
   let mother = motherName !== ""
@@ -22,7 +25,7 @@ const getParentage = (motherName, fatherName, gender) => {
   return parentage
 }
 
-const splitBlessing = (blessing) => {
+export const splitBlessing = (blessing) => {
   // trim off initial and final whitespace, and remove new lines
   let blessingTrimmed = blessing.trim().replace(/\n+/g, '')
   // extract first letter
@@ -56,8 +59,8 @@ const splitBlessing = (blessing) => {
   return [firstLetter, longerVerses];
 }
 
-const getMemberTitle = (gender) => {
-  return gender === 'Female' ? ' Sister' : ' Brother'
+export const getMemberTitle = (gender) => {
+  return gender ? ' Brother' : ' Sister'
 }
 
 export const preparePacket = data => {
