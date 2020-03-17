@@ -68,8 +68,8 @@ const Blessing = () => {
             <section>
               <h4>Uh oh, it seems like an error occurred while making the PDF. Try again?</h4>
               <button className="action-button" onClick={() => send(`RETRY`)}>Retry PDF</button>
-              <h5>You can still download the Word document here for now.</h5>
-              <a className="action-button" href={docx_link} download>Download docx</a>
+              <h5 className="still-download">You can still download the Word document here for now.</h5>
+              <a className="secondary-button" href={docx_link} download>Download docx</a>
             </section>
           </motion.div>
         )}

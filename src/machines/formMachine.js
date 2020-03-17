@@ -18,7 +18,7 @@ const generateDocx = (context, _) => {
         'x-api-key': 'gKd0oWv9oa5sut9xpYQfJ5MwKk7ZHYsM9Iqn5HIB'
       }
     }
-  ).then(response => JSON.parse(response.data.body))
+  ).then(response => response.data.body)
 }
 
 const generatePDF = (context, _) => {
@@ -31,7 +31,7 @@ const generatePDF = (context, _) => {
         'x-api-key': 'gKd0oWv9oa5sut9xpYQfJ5MwKk7ZHYsM9Iqn5HIB'
       }
     }
-  ).then(response => JSON.parse(response.data.body))
+  ).then(response => response.data.body)
 }
 
 export const formMachine = Machine({
@@ -59,8 +59,8 @@ export const formMachine = Machine({
         onDone: {
           target: "gen_pdf",
           actions: assign({
-            docx_key: (_, event) => event.Key,
-            docx_link: (_, event) => event.Location
+            docx_key: (_, event) => event.data.Key,
+            docx_link: (_, event) => event.data.Location
           })
         },
         onError: "error_docx"
@@ -73,7 +73,7 @@ export const formMachine = Machine({
         onDone: {
           target: "success",
           actions: assign({
-            pdf_link: (_, event) => event.Location
+            pdf_link: (_, event) => event.data.Location
           })
         },
         onError: "error_pdf"
