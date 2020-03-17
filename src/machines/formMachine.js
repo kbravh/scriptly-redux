@@ -59,8 +59,8 @@ export const formMachine = Machine({
         onDone: {
           target: "gen_pdf",
           actions: assign({
-            docx_key: (_, event) => event.data.Key,
-            docx_link: (_, event) => event.data.Location
+            docx_key: (_, event) => event.Key,
+            docx_link: (_, event) => event.Location
           })
         },
         onError: "error_docx"
@@ -73,7 +73,7 @@ export const formMachine = Machine({
         onDone: {
           target: "success",
           actions: assign({
-            pdf_link: (_, event) => event.data.Location
+            pdf_link: (_, event) => event.Location
           })
         },
         onError: "error_pdf"

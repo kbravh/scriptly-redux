@@ -8,6 +8,7 @@ const s3 = new AWS.S3()
 
 var srcBucket = process.env.S3_BUCKET_INPUT;
 var dstBucket = process.env.S3_BUCKET_OUTPUT;
+const CLOUDFRONT = process.env.CLOUDFRONT
 
 exports.handler = async (event) => {
 
@@ -58,7 +59,9 @@ exports.handler = async (event) => {
     await uploadPromise.then(data => {
       log.info('RESULT: Success ' + dstKey);
       response = {
-        body: JSON.stringify(data)
+        body: {
+          Location: CLOUDFRONT + '/' + dstKey
+        }
       }
     })
   } catch (error) {

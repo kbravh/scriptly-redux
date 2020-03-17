@@ -16,6 +16,8 @@ var Docxtemplater = require('docxtemplater');
 var fs = require('fs');
 var path = require('path');
 
+const CLOUDFRONT = process.env.CLOUDFRONT
+
 exports.handler = async (event) => {
 
     //Load the docx file as a binary
@@ -82,7 +84,10 @@ exports.handler = async (event) => {
         console.log("Success!", data);
         response = {
             statusCode: 200,
-            body: JSON.stringify(data)
+            body: {
+                Location:CLOUDFRONT + '/' + data.Key,
+                Key: data.Key
+            }
         }
     }).catch(error => {
         console.log(error)
