@@ -56,7 +56,6 @@ exports.handler = async (event) => {
     // upload the result to s3
     log.debug("uploading to s3 " + dstBucket);
     let uploadPromise = s3.upload({
-      ACL: 'public-read',
       Bucket: dstBucket,
       Key: dstKey,
       Body: Buffer.from(pdf),

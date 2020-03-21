@@ -74,7 +74,6 @@ exports.handler = async (event) => {
     let time = new Date().getTime()
 
     let uploadPromise = s3.upload({
-        ACL: 'public-read',
         Bucket: 'patriarchal-files',
         Key: `${event.firstName}${event.lastName}-${time}.docx`,
         Body: buf,
