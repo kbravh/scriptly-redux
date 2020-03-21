@@ -83,7 +83,7 @@ const Blessing = () => {
             <section id="final-download">
               <h2>Congrats!</h2>
               <h3>Here is your scripture-styled blessing.</h3>
-              <h4 className="expiry">This link will expire in 24 hours.</h4>
+              <h4 className="expiry">This link will expire in 10 minutes.</h4>
               <motion.a whileTap={{scale: 0.9}} className="action-button" href={pdf_link} download target="_blank" rel="noopener noreferrer">Download pdf</motion.a>
               <h4 className="docx-download-header">Need to make any changes? Download this Word document instead.</h4>
               <motion.a whileTap={{scale: 0.9}} className="secondary-button" href={docx_link} download target="_blank" rel="noopener noreferrer">Download docx</motion.a>
@@ -152,7 +152,7 @@ const GeneratingPDF = () => {
   useEffect(() => {
     setTimeout(() => {
       setLoader(loadingMessages[randomNum(0, loadingMessages.length-1)])
-    }, 7000)
+    }, 4000)
   }, [setLoader])
 
   useEffect(() => {
