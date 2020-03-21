@@ -79,7 +79,8 @@ exports.handler = async (event) => {
       const url = `${CLOUDFRONT_DISTRO}/${data.Key}`
       const options = {
         url,
-        expires: Date.now() + LINK_EXPIRY * 60000
+        // This has to be reduced from ms to sec
+        expires: Math.round((Date.now() + LINK_EXPIRY * 60000)/1000)
       }
       response = {
         body: {
