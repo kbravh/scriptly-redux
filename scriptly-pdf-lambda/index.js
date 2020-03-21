@@ -10,7 +10,7 @@ var srcBucket = process.env.S3_BUCKET_INPUT;
 var dstBucket = process.env.S3_BUCKET_OUTPUT;
 const CLOUDFRONT_DISTRO = process.env.CLOUDFRONT_DISTRO
 const CLOUDFRONT_ID = process.env.CLOUDFRONT_ID
-const CLOUDFRONT_PKEY = process.env.CLOUDFRONT_PKEY
+const CLOUDFRONT_PKEY = process.env.CLOUDFRONT_PKEY.replace(/\\n/gm, '\n')
 const LINK_EXPIRY = parseInt(process.env.LINK_EXPIRY)
 
 var cfSigner = new AWS.CloudFront.Signer(CLOUDFRONT_ID, CLOUDFRONT_PKEY);
