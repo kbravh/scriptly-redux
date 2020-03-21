@@ -18,10 +18,8 @@ var path = require('path');
 
 const CLOUDFRONT_DISTRO = process.env.CLOUDFRONT_DISTRO
 const CLOUDFRONT_ID = process.env.CLOUDFRONT_ID
-const CLOUDFRONT_PKEY = process.env.CLOUDFRONT_PKEY.replace(/\\n/gm, '\n')
+const CLOUDFRONT_PKEY = process.env.CLOUDFRONT_PKEY
 const LINK_EXPIRY = parseInt(process.env.LINK_EXPIRY)
-
-var cfSigner = new AWS.CloudFront.Signer(CLOUDFRONT_ID, CLOUDFRONT_PKEY);
 
 exports.handler = async (event) => {
 
@@ -84,6 +82,16 @@ exports.handler = async (event) => {
     }).promise();
 
     let response
+
+    //Get private key
+    let privatekey = await s3.getObject({
+        Bucket: `patriarchal-assets`,
+        Key: CLOUDFRONT_PKEY
+    }).promise()
+
+    privatekey = privatekey.Body.toString(`ascii`)
+
+    var cfSigner = new AWS.CloudFront.Signer(CLOUDFRONT_ID, privatekey);
 
     await uploadPromise.then(data => {
         console.log("Success!", data);

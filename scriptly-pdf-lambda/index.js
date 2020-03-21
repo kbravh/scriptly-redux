@@ -10,7 +10,7 @@ var srcBucket = process.env.S3_BUCKET_INPUT;
 var dstBucket = process.env.S3_BUCKET_OUTPUT;
 const CLOUDFRONT_DISTRO = process.env.CLOUDFRONT_DISTRO
 const CLOUDFRONT_ID = process.env.CLOUDFRONT_ID
-const CLOUDFRONT_PKEY = process.env.CLOUDFRONT_PKEY.replace(/\\n/gm, '\n')
+const CLOUDFRONT_PKEY = process.env.CLOUDFRONT_PKEY
 const LINK_EXPIRY = parseInt(process.env.LINK_EXPIRY)
 
 var cfSigner = new AWS.CloudFront.Signer(CLOUDFRONT_ID, CLOUDFRONT_PKEY);
@@ -62,6 +62,16 @@ exports.handler = async (event) => {
       Body: Buffer.from(pdf),
       ContentType: 'application/pdf'
     }).promise();
+
+    //Get private key
+    let privatekey = await s3.getObject({
+      Bucket: `patriarchal-assets`,
+      Key: CLOUDFRONT_PKEY
+    }).promise()
+
+    privatekey = privatekey.Body.toString(`ascii`)
+
+    var cfSigner = new AWS.CloudFront.Signer(CLOUDFRONT_ID, privatekey);
 
     await uploadPromise.then(data => {
       log.info('RESULT: Success ' + dstKey);
