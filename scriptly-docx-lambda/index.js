@@ -16,7 +16,12 @@ var Docxtemplater = require('docxtemplater');
 var fs = require('fs');
 var path = require('path');
 
-const CLOUDFRONT = process.env.CLOUDFRONT
+const CLOUDFRONT_DISTRO = process.env.CLOUDFRONT_DISTRO
+const CLOUDFRONT_ID = process.env.CLOUDFRONT_ID
+const CLOUDFRONT_PKEY = process.env.CLOUDFRONT_PKEY
+const LINK_EXPIRY = parseInt(process.env.LINK_EXPIRY)
+
+var cfSigner = new AWS.CloudFront.Signer(CLOUDFRONT_ID, CLOUDFRONT_PKEY);
 
 exports.handler = async (event) => {
 
@@ -82,10 +87,17 @@ exports.handler = async (event) => {
 
     await uploadPromise.then(data => {
         console.log("Success!", data);
+        // Create Signed URL
+        const url = `${CLOUDFRONT_DISTRO}/${data.Key}`
+        const options = {
+            url,
+            expires: Date.now() + LINK_EXPIRY * 60000
+        }
+
         response = {
             statusCode: 200,
             body: {
-                Location:CLOUDFRONT + '/' + data.Key,
+                Location: cfSigner.getSignedUrl(options),
                 Key: data.Key
             }
         }

@@ -8,7 +8,12 @@ const s3 = new AWS.S3()
 
 var srcBucket = process.env.S3_BUCKET_INPUT;
 var dstBucket = process.env.S3_BUCKET_OUTPUT;
-const CLOUDFRONT = process.env.CLOUDFRONT
+const CLOUDFRONT_DISTRO = process.env.CLOUDFRONT_DISTRO
+const CLOUDFRONT_ID = process.env.CLOUDFRONT_ID
+const CLOUDFRONT_PKEY = process.env.CLOUDFRONT_PKEY
+const LINK_EXPIRY = parseInt(process.env.LINK_EXPIRY)
+
+var cfSigner = new AWS.CloudFront.Signer(CLOUDFRONT_ID, CLOUDFRONT_PKEY);
 
 exports.handler = async (event) => {
 
@@ -18,8 +23,10 @@ exports.handler = async (event) => {
   } = event;
   log.info(`Data from the event: ${event.bucket}:${event.srcKey}`)
 
-  if(!/.*docx$/.test(srcKey)){
-    throw JSON.stringify({message: `Invalid document type provided`})
+  if (!/.*docx$/.test(srcKey)) {
+    throw JSON.stringify({
+      message: `Invalid document type provided`
+    })
   }
   //the destination file will have the same name with pdf extension
   const dstKey = srcKey.replace(/docx?/, 'pdf');
@@ -58,9 +65,15 @@ exports.handler = async (event) => {
 
     await uploadPromise.then(data => {
       log.info('RESULT: Success ' + dstKey);
+      // Create Signed URL
+      const url = `${CLOUDFRONT_DISTRO}/${data.Key}`
+      const options = {
+        url,
+        expires: Date.now() + LINK_EXPIRY * 60000
+      }
       response = {
         body: {
-          Location: CLOUDFRONT + '/' + dstKey
+          Location: cfSigner.getSignedUrl(options)
         }
       }
     })
