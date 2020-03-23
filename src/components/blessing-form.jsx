@@ -47,7 +47,7 @@ const BlessingForm = ({ send }) => {
             blessing: Yup.string().required('This field is required')
           })}
         >
-          {({ isSubmitting, setFieldValue, isValid }) => (
+          {({ isSubmitting, setFieldValue, isValid, submitCount }) => (
             <Form className="blessing-form shadow">
 
               <h5>First Name</h5>
@@ -116,7 +116,7 @@ const BlessingForm = ({ send }) => {
               <Field as="textarea" name="blessing" placeholder="Patriarchal Blessing" style={{ resize: 'vertical' }} />
               <ErrorMessage name="blessing" component="div" className="error-box" />
 
-              {!isValid &&
+              {(!isValid && submitCount > 0) &&
                 <motion.div className="submit-form-error"
                   initial="hidden"
                   animate="visible"
