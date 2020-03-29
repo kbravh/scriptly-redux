@@ -3,7 +3,7 @@ import gsap, { Bounce } from 'gsap'
 import { useMachine } from '@xstate/react'
 import { formMachine } from '../machines/formMachine'
 import { motion, AnimatePresence } from 'framer-motion'
-import {useIntl} from 'gatsby-plugin-intl'
+import { useIntl } from 'gatsby-plugin-intl'
 
 import { randomNum } from '../util'
 
@@ -29,14 +29,23 @@ const exit = {
   opacity: 0
 }
 
-const loadingMessages = [
-  `Cross-referencing verses`,
-  `Engraving plates`,
-  `Consulting Liahona`,
-  `Drafting Chapters`,
-  `Adjusting Footnotes`,
-  `Aligning Headers`
-]
+const loadingMessages = {
+  "en": [
+    `Cross-referencing verses`,
+    `Engraving plates`,
+    `Consulting Liahona`,
+    `Drafting Chapters`,
+    `Adjusting Footnotes`,
+    `Aligning Headers`
+  ],
+  "es": [
+    `Grabando las planchas`,
+    `Consultando la Liahona`,
+    `Ajustando las notas de pie de página`,
+    `Alineando los títulos`,
+    `Redactando los capítulos`
+  ]
+}
 
 const Blessing = () => {
   const [state, send] = useMachine(formMachine)
@@ -45,7 +54,7 @@ const Blessing = () => {
 
   return (
     <>
-      <SEO title={intl.formatMessage({id: "form.title"})} />
+      <SEO title={intl.formatMessage({ id: "form.title" })} />
       <AnimatePresence exitBeforeEnter>
         {state.matches(`form`) && (
           <motion.div className="blessing-page-container" key="blessing-form" initial="hidden" animate="visible" variants={variants} exit={exit}>
@@ -60,18 +69,18 @@ const Blessing = () => {
         {state.matches(`error_docx`) && (
           <motion.div className="blessing-page-container" key="error-docx" initial="hidden" animate="visible" variants={variants} exit={exit}>
             <section>
-              <h4>{intl.formatMessage({id: "download.error-docx"})}</h4>
-              <button className="action-button" onClick={() => send(`RETRY`)}>{intl.formatMessage({id: "download.retry"})}</button>
+              <h4>{intl.formatMessage({ id: "download.error-docx" })}</h4>
+              <button className="action-button" onClick={() => send(`RETRY`)}>{intl.formatMessage({ id: "download.retry" })}</button>
             </section>
           </motion.div>
         )}
         {state.matches(`error_pdf`) && (
           <motion.div className="blessing-page-container" key="error-pdf" initial="hidden" animate="visible" variants={variants} exit={exit}>
             <section>
-              <h4>{intl.formatMessage({id: "download.error-pdf"})}</h4>
-              <button className="action-button" onClick={() => send(`RETRY`)}>{intl.formatMessage({id: "download.retry"})}</button>
-              <h5 className="still-download">{intl.formatMessage({id: "download.meanwhile-docx"})}</h5>
-              <a className="secondary-button" href={docx_link} download>{intl.formatMessage({id: "download.download-docx"})}</a>
+              <h4>{intl.formatMessage({ id: "download.error-pdf" })}</h4>
+              <button className="action-button" onClick={() => send(`RETRY`)}>{intl.formatMessage({ id: "download.retry" })}</button>
+              <h5 className="still-download">{intl.formatMessage({ id: "download.meanwhile-docx" })}</h5>
+              <a className="secondary-button" href={docx_link} download>{intl.formatMessage({ id: "download.download-docx" })}</a>
             </section>
           </motion.div>
         )}
@@ -83,12 +92,12 @@ const Blessing = () => {
         {state.matches(`success`) && (
           <motion.div className="blessing-page-container" key="success" initial="hidden" animate="visible" variants={variants} exit={exit}>
             <section id="final-download">
-              <h2>{intl.formatMessage({id: "download.congrats"})}</h2>
-              <h3>{intl.formatMessage({id: "download.blessing-here"})}</h3>
-              <h4 className="expiry">{intl.formatMessage({id: "download.link-expiry"})}</h4>
-              <motion.a whileTap={{scale: 0.9}} className="action-button" href={pdf_link} download target="_blank" rel="noopener noreferrer">{intl.formatMessage({id: "download.download-pdf"})}</motion.a>
-              <h4 className="docx-download-header">{intl.formatMessage({id: "download.word-message"})}</h4>
-              <motion.a whileTap={{scale: 0.9}} className="secondary-button" href={docx_link} download target="_blank" rel="noopener noreferrer">{intl.formatMessage({id: "download.download-docx"})}</motion.a>
+              <h2>{intl.formatMessage({ id: "download.congrats" })}</h2>
+              <h3>{intl.formatMessage({ id: "download.blessing-here" })}</h3>
+              <h4 className="expiry">{intl.formatMessage({ id: "download.link-expiry" })}</h4>
+              <motion.a whileTap={{ scale: 0.9 }} className="action-button" href={pdf_link} download target="_blank" rel="noopener noreferrer">{intl.formatMessage({ id: "download.download-pdf" })}</motion.a>
+              <h4 className="docx-download-header">{intl.formatMessage({ id: "download.word-message" })}</h4>
+              <motion.a whileTap={{ scale: 0.9 }} className="secondary-button" href={docx_link} download target="_blank" rel="noopener noreferrer">{intl.formatMessage({ id: "download.download-docx" })}</motion.a>
             </section>
           </motion.div>
         )}
@@ -136,7 +145,7 @@ const GeneratingDocx = () => {
   }, [tl])
   return (
     <>
-      <h2>{intl.formatMessage({id: "download.writing"})}</h2>
+      <h2>{intl.formatMessage({ id: "download.writing" })}</h2>
       <svg id="writing" style={{ width: "100px" }} xmlns="http://www.w3.org/2000/svg" viewBox="0 -40 90.4 120">
         <path id="inkpot" d="M68.1 56.8a1.8 1.8 0 100 3.6h.8v4.2c-3.7.3-5.8 2-5.8 4.6v4.3c0 1 .8 1.8 1.8 1.8h14c1 0 1.9-.8 1.9-1.8v-5.4c0-1.2-.6-3-3.9-3.6v8h-2V60.3h.9a1.8 1.8 0 000-3.6z" />
         <path id="inkdrop" d="m 73.793574,59.881877 a 1.6,1.6 0 0 1 -3.2,0 c 0,-0.9 1,-1.8 1.6,-3.1 0.6,1.3 1.6,2.2 1.6,3.1 z" />
@@ -150,13 +159,20 @@ const GeneratingDocx = () => {
 }
 
 const GeneratingPDF = () => {
-  const [loader, setLoader] = useState(loadingMessages[0])
+  const intl = useIntl()
+  console.log(intl.locale)
+  const [loader, setLoader] = useState(loadingMessages[intl.locale][0])
 
   useEffect(() => {
-    setTimeout(() => {
-      setLoader(loadingMessages[randomNum(0, loadingMessages.length-1)])
+    let messageInterval = setInterval(() => {
+      let message = loadingMessages[intl.locale][randomNum(0, loadingMessages[intl.locale].length - 1)]
+      setLoader(message)
     }, 4000)
-  }, [setLoader])
+    // we want to cleanup the interval when the component unmounts so it doesn't try to update anymore
+    return () => {
+      clearInterval(messageInterval)
+    }
+  }, [setLoader, intl.locale])
 
   useEffect(() => {
     gsap.to('#scroll', {
