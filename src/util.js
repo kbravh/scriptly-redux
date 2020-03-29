@@ -11,17 +11,41 @@ export const getFullName = (firstName, middleName, lastName) => {
     `${firstName} ${lastName}`
 }
 
-export const getParentage = (motherName, fatherName, gender) => {
+export const getParentage = (motherName, fatherName, gender, locale) => {
+  let childTitles = {
+    "en": {
+      "son": " son",
+      "daughter": " daughter"
+    },
+    "es": {
+      "son": " hijo",
+      "daughter": " hija"
+    }
+  }
+
   let parentage = ","
   let father = fatherName !== ""
   let mother = motherName !== ""
-  let child = gender  ? ' son' : ' daughter'
+  let child = gender  ? childTitles[locale]["son"] : childTitles[locale]["daughter"]
 
+  // We'll immediately omit this line if there are no parents listed
   if (!father && !mother) {
     return ""
   }
-  parentage += child + ' of '
-  parentage += father && mother ? fatherName + ' and ' + motherName : fatherName + motherName
+  switch (locale) {
+    case "en":
+      parentage += child + ' of '
+      parentage += father && mother ? fatherName + ' and ' + motherName : fatherName + motherName
+      break;
+    case "es":
+      parentage += child + ' de '
+      // In Spanish, "y" changes to "e" before a "y" or "i"
+      let joiner = /^(Y|I).*/i.test(motherName) ? " e " : " y "
+      parentage += father && mother ? fatherName + joiner + motherName : fatherName + motherName
+      break;
+    default:
+      break;
+  }
   return parentage
 }
 
@@ -59,8 +83,20 @@ export const splitBlessing = (blessing) => {
   return [firstLetter, longerVerses];
 }
 
-export const getMemberTitle = (gender) => {
-  return gender ? ' Brother' : ' Sister'
+export const getMemberTitle = (gender, locale) => {
+  /* This will be preceded by the language's word for "to"*/
+const titles = {
+  "en": { // to...
+    "brother": " Brother",
+    "sister": " Sister"
+  },
+  "es": { // a...
+    "brother": "l Hermano",
+    "sister": " la Hermana"
+  }
+}
+
+  return gender ? titles[locale]["brother"] : titles[locale]["sister"]
 }
 
 export const preparePacket = data => {
@@ -71,11 +107,11 @@ export const preparePacket = data => {
     fullName: getFullName(data.firstName, data.middleName, data.lastName),
     patriarch: data.patriarch,
     stake: data.stake,
-    parentage: getParentage(data.mother, data.father, data.gender),
+    parentage: getParentage(data.mother, data.father, data.gender, data.locale),
     blessingFirstLetter,
     blessing,
-    memberTitle: getMemberTitle(data.gender),
+    memberTitle: getMemberTitle(data.gender, data.locale),
     blessingDate: data.date,
-    template: `en`
+    template: data.locale
   }
 }
