@@ -16,6 +16,7 @@ const Layout = ({ children }) => {
       }
     }
   `)
+  console.log("Layout children: ", children)
 
   return (
     <>
