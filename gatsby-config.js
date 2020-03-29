@@ -14,6 +14,19 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-plugin-intl`,
+      options: {
+        // language JSON resource path
+        path: `${__dirname}/src/intl`,
+        // supported language
+        languages: [`en`, `es`],
+        // language file path
+        defaultLanguage: `en`,
+        // option to redirect to `/es` when connecting `/`
+        redirect: true,
+      },
+    },
+    {
       resolve: "gatsby-plugin-sentry",
       options: {
         dsn: "https://67e863347a06470ca38859621a7f5830@sentry.io/2877175",

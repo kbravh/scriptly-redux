@@ -1,5 +1,5 @@
 import React from "react"
-import { Link } from "gatsby"
+import { useIntl, Link } from "gatsby-plugin-intl"
 
 import SEO from "../components/seo"
 import DocPreview from '../components/doc-preview'
@@ -8,9 +8,10 @@ import { motion } from 'framer-motion'
 import '../components/css/index.css'
 
 const IndexPage = () => {
+  const intl = useIntl()
   return (
     <>
-      <SEO title="Home" />
+      <SEO title={intl.formatMessage({id: "home.title"})} />
       <motion.div className="home" key="home"
         initial="hidden"
         animate="visible"
@@ -22,9 +23,9 @@ const IndexPage = () => {
         transition={{ duration: .75 }}
       >
         <div className="welcome">
-          <h1>Welcome to Scriptly!</h1>
-          <p>Your patriarchal blessing is like a personal chapter of scripture written <span style={{ fontStyle: 'italic' }}>just for you</span>.</p>
-          <p>We think it should look like one, too.</p>
+          <h1>{intl.formatMessage({id: "home.welcome"})}</h1>
+          <p>{intl.formatMessage({id: "home.personal-chapter"})} <span style={{ fontStyle: 'italic' }}>{intl.formatMessage({id: "home.justforyou"})}</span>.</p>
+          <p>{intl.formatMessage({id: "home.look-like"})}</p>
         </div>
         <DocPreview />
       </motion.div>
@@ -38,7 +39,7 @@ const IndexPage = () => {
         }}
         transition={{ duration: .75 }}
       >
-        <Link to="/blessing" className="action-button">Get started</Link>
+        <Link to="/blessing" className="action-button">{intl.formatMessage({id: "home.start"})}</Link>
       </motion.div>
     </>
   )

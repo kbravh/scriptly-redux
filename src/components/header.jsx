@@ -1,4 +1,5 @@
 import { Link } from "gatsby"
+// import { Link, useIntl } from "gatsby-plugin-intl"
 import PropTypes from "prop-types"
 import React from "react"
 import { motion } from 'framer-motion'
@@ -6,6 +7,7 @@ import { motion } from 'framer-motion'
 import './css/header.css'
 
 const Header = ({ siteTitle }) => {
+  // const intl = useIntl()
   return (
     <motion.header
       initial={{ y: -100, opacity: 0 }}
@@ -27,7 +29,8 @@ const Header = ({ siteTitle }) => {
           }}
           whileTap={{ scale: 0.9 }}
         >
-          <Link to="/faq" activeStyle={{borderBottom: `3px solid var(--background-color)`}}>FAQs</Link>
+          {/* <Link to="/faq" activeStyle={{borderBottom: `3px solid var(--background-color)`}}>{intl.formatMessage({id: "header.faq"})}</Link> */}
+          <Link to="/faq" activeStyle={{borderBottom: `3px solid var(--background-color)`}}>FAQ</Link>
         </motion.h3>
       </nav>
     </motion.header>
