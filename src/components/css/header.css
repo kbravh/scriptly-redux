@@ -47,6 +47,24 @@ nav a:hover {
   fill: var(--background-color);
 }
 
+#language-logo {
+  height: 28px;
+}
+
+#language-path {
+  fill: var(--background-color);
+}
+
+#nav-links {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#nav-links > * {
+  margin-left: 30px;
+}
+
 @media only screen and (max-width: 800px) {
   header {
     height: 70px;
