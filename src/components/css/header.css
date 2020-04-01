@@ -86,7 +86,8 @@ nav a:hover {
   width: 100%;
 }
 
-.language:hover, .language:focus {
+.language:hover,
+.language:focus {
   color: var(--background-color);
   background-color: var(--brand-color);
 }

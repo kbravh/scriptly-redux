@@ -32,7 +32,8 @@ const Header = ({ siteTitle }) => {
 
   useEffect(() => {
     if(isLanguageOpen){
-      languageListRef.current.querySelector('.language').focus()
+      //put focus on the current language
+      languageListRef.current.querySelector(`.language[data-code="${intl.locale}"]`).focus()
       document.addEventListener("mousedown", clickOutsideHandler)
     } else {
       document.removeEventListener("mousedown", clickOutsideHandler)
@@ -90,6 +91,7 @@ const Header = ({ siteTitle }) => {
               {languages.map(language => (
                 <motion.button
                   key={language.code}
+                  data-code={language.code}
                   className="language"
                   tabIndex={isLanguageOpen ? "0" : "-1"}
                   onClick={() => changeLocale(language.code)}
