@@ -9,7 +9,9 @@
     "book": "THE BOOK OF"
   },
   "header": {
-    "faq": "FAQ"
+    "faq": "FAQ",
+    "english": "English",
+    "spanish": "Spanish"
   },
   "faq": {
     "header": "Frequently Asked Questions",

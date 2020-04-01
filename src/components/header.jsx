@@ -1,12 +1,38 @@
-import { Link, useIntl } from "gatsby-plugin-intl"
+import { Link, useIntl, changeLocale } from "gatsby-plugin-intl"
 import PropTypes from "prop-types"
-import React from "react"
+import React, {useCallback, useEffect, useState} from "react"
 import { motion } from 'framer-motion'
 
 import './css/header.css'
 
+const languages = [
+  {name: `english`,code: `en`},
+  {name: `spanish`, code: `es`}
+]
+
 const Header = ({ siteTitle }) => {
   const intl = useIntl()
+  const [isLanguageOpen, setLanguageOpen] = useState(false)
+
+  const closeLanguageDropdown = useCallback(() => {
+    if(isLanguageOpen){
+      setLanguageOpen(false)
+    }
+  }, [isLanguageOpen])
+  const handleKeypress = useCallback(({key}) => {
+    if(key === `Escape`){
+      closeLanguageDropdown()
+    }
+  }, [closeLanguageDropdown])
+
+  useEffect(()=> {
+    window.addEventListener("click", closeLanguageDropdown)
+    window.addEventListener("keydown", handleKeypress)
+    return () => {
+      window.removeEventListener("click", closeLanguageDropdown)
+      window.removeEventListener("keydown", handleKeypress)
+    }
+  }, [handleKeypress, closeLanguageDropdown])
   return (
     <motion.header
       initial={{ y: -100, opacity: 0 }}
@@ -29,16 +55,33 @@ const Header = ({ siteTitle }) => {
           >
             <Link to="/faq" activeStyle={{ borderBottom: `3px solid var(--background-color)` }}>{intl.formatMessage({ id: "header.faq" })}</Link>
           </motion.h3>
-          <motion.span
-            initial={{y: 4}}
-            whileHover={{ y: -1 }}
-            whileTap={{ scale: 0.9 }}
-            style={{ height: 28 }}
-          >
-            <svg id="language-logo" xmlns="http://www.w3.org/2000/svg" height="28px" fillRule="evenodd" strokeLinejoin="round" strokeMiterlimit="1.4" clipRule="evenodd" viewBox="0 0 28 28">
-              <path id="language-path" d="M28 0v22H16l-8 6v-6H0V0zm-7 5V3h-2v2h-3v2h5a11.9 11.9 0 01-1.3 4.3A14.4 14.4 0 0118 8.7v-.2l-1.8 1 .1.2c.7 1.2 1.5 2.4 2.4 3.4a12.4 12.4 0 01-2.6 2.7l-.3.2-.3.2 1.2 1.6a14.5 14.5 0 003.5-3.3 9.4 9.4 0 002.6 1.4l.6-1.8-.6-.3-1.5-1A14 14 0 0023 7h1V5zM8 6H6.7L2.4 16h2.2l.4-1 .4-1h5.2l.8 2h2.2L9.3 6zm-1.7 6h3.4L8 8z" />
-            </svg>
-          </motion.span>
+          <div className="language-section">
+            <motion.button
+              id="language-button"
+              initial={{y: 4}}
+              whileHover={{ y: -1 }}
+              whileTap={{ scale: 0.9 }}
+              style={{ height: 28 }}
+              onClick={() => setLanguageOpen(!isLanguageOpen)}
+            >
+              <svg id="language-logo" xmlns="http://www.w3.org/2000/svg" height="28px" fillRule="evenodd" strokeLinejoin="round" strokeMiterlimit="1.4" clipRule="evenodd" viewBox="0 0 28 28">
+                <path id="language-path" d="M28 0v22H16l-8 6v-6H0V0zm-7 5V3h-2v2h-3v2h5a11.9 11.9 0 01-1.3 4.3A14.4 14.4 0 0118 8.7v-.2l-1.8 1 .1.2c.7 1.2 1.5 2.4 2.4 3.4a12.4 12.4 0 01-2.6 2.7l-.3.2-.3.2 1.2 1.6a14.5 14.5 0 003.5-3.3 9.4 9.4 0 002.6 1.4l.6-1.8-.6-.3-1.5-1A14 14 0 0023 7h1V5zM8 6H6.7L2.4 16h2.2l.4-1 .4-1h5.2l.8 2h2.2L9.3 6zm-1.7 6h3.4L8 8z" />
+              </svg>
+            </motion.button>
+            <motion.div className="language-select"
+              animate={isLanguageOpen ? `open` : `closed`}
+              variants={{
+                open: {opacity: 1, scale: 1, y: 10},
+                closed: {opacity: 0, scale: 0.6, transition:{type: "spring",stiffness: 400,damping: 40}, y: 10}
+              }}
+            >
+              {languages.map(language => (
+                <motion.button className="language" onClick={() => changeLocale(language.code)}>
+                  {intl.formatMessage({id: `header.`+ language.name})}
+                </motion.button>
+              ))}
+            </motion.div>
+          </div>
         </div>
       </nav>
     </motion.header>
@@ -54,3 +97,5 @@ Header.defaultProps = {
 }
 
 export default Header
+
+// Language logo by Explanaicon from the Noun Project

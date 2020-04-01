@@ -9,7 +9,9 @@
     "book": "EL LIBRO DE"
   },
   "header": {
-    "faq": "FAQ"
+    "faq": "FAQ",
+    "english": "Inglés",
+    "spanish": "Español"
   },
   "faq": {
     "header": "Preguntas frecuentes",

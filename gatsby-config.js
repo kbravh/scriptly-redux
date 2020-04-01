@@ -53,6 +53,10 @@ module.exports = {
           },
           {
             family: 'Alata'
+          },
+          {
+            family: 'Righteous',
+            variants: [`400`]
           }
         ]
       }
