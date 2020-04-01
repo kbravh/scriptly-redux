@@ -69,8 +69,8 @@ const Header = ({ siteTitle }) => {
               aria-controls="language-select"
               aria-label={intl.formatMessage({id: "header.lang-menu"})}
               ref={languageButtonRef}
-              initial={{ y: 4 }}
-              whileHover={{ y: -1 }}
+              initial={{ y: 6 }}
+              whileHover={{ y: 1 }}
               whileTap={{ scale: 0.9 }}
               style={{ height: 28 }}
               onClick={() => setLanguageOpen(!isLanguageOpen)}

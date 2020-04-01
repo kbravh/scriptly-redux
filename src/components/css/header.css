@@ -50,6 +50,7 @@ nav a:hover {
 #language-button {
   background: none;
   border: none;
+  transform: translateY(6px);
 }
 
 #language-logo {
