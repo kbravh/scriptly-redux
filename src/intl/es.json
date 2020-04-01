@@ -1,0 +1,62 @@
+{
+  "home": {
+    "title": "Página principal",
+    "welcome": "Bienvenidos a Scriptly!",
+    "personal-chapter": "Tu bendición patriarcal es como un capítulo de escritura personal escrito",
+    "justforyou": "justamente para tí",
+    "look-like": "Creemos que debe parecerlo, también.",
+    "start": "Empezar",
+    "book": "EL LIBRO DE"
+  },
+  "header": {
+    "faq": "FAQ",
+    "lang-menu": "Menú de idiomas",
+    "english": "Inglés",
+    "spanish": "Español"
+  },
+  "faq": {
+    "header": "Preguntas frecuentes",
+    "seen-by-others": "¿Alguién más va a ver mi bendicíón patriarcal?",
+    "seen-by-others-answer": "Éste es un proceso completamente automático, por lo que nadie verá tu bendición patriarcal en ningún momento. Tus documentos serán borrados automáticamente después de 24 hours para más seguridad.",
+    "contact": "¿Tienes alguna pregunta o comentario? Mándame un email: "
+  },
+  "404": {
+    "title": "404: No Encontrado",
+    "notfound": "NO ENCONTRADO",
+    "message": "¡La página que buscabas no so podía encontrar!"
+  },
+  "form": {
+    "title": "Bendición patriarcal",
+    "enter-info": "Ingresa la información de tu bendición patriarcal aquí abajo.",
+    "required": "Este campo es necesario",
+    "optional": "opcional",
+    "first": "Nombre de pila",
+    "middle": "Segundo nombre",
+    "last": "Apellido",
+    "gender": "Género",
+    "male": "Hombre",
+    "female": "Mujer",
+    "mother": "Nombre completo de la madre",
+    "father": "Nombre completo del padre",
+    "patriarch": "Nombre completo del patriarca",
+    "stake": "Estaca o distrito",
+    "date": "Fecha de la bendición",
+    "blessing": "Texto de la bendición",
+    "blessing-placeholder": "Bendición patriarcal",
+    "generic-error": "¡Ups! Parece que faltan algunas partes del formulario.",
+    "generate": "Generar documento"
+  },
+  "download": {
+    "error-docx": "Ups, parece que ocurrió un error. ¿Intentar de nuevo?",
+    "retry": "Intentar",
+    "error-pdf": "Ups, parece que occurió un error al generar el PDF. ¿Intentar de nuevo?",
+    "meanwhile-docx": "Aún puedes descargar el documento Word aquí.",
+    "download-docx": "Descargar docx",
+    "congrats": "¡Felicidades!",
+    "blessing-here": "He aquí tu bendición estilo escritura.",
+    "link-expiry": "Este enlace se vencerá en 10 minutos.",
+    "download-pdf": "Descargar pdf",
+    "word-message": "¿Necesitas hacer algún cambio? Descarga este documento Word.",
+    "writing": "Escribiendo escrituras..."
+  }
+}

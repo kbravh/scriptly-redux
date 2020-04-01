@@ -1,20 +1,25 @@
 import React from 'react'
+import {useIntl} from 'gatsby-plugin-intl'
+import SEO from "../components/seo"
 
 import '../components/css/faq.css'
 
-const FAQ = () => (
+const FAQ = () => {
+  const intl = useIntl()
+  return (
   <>
-    <h1 className="faq-header">Frequently Asked Questions</h1>
+    <SEO title="FAQs" />
+    <h1 className="faq-header">{intl.formatMessage({id: "faq.header"})}</h1>
     <ul className="faq-list">
       <li>
-        <h3>Is my patriarchal blessing going to be seen by anyone else?</h3>
-        <p>This is a completely automated process, so no one sees your patriarchal blessing at any point. Your documents will automatically be erased after 24 hours for more security.</p>
+        <h3>{intl.formatMessage({id: "faq.seen-by-others"})}</h3>
+        <p>{intl.formatMessage({id: "faq.seen-by-others-answer"})}</p>
       </li>
     </ul>
     <div className="contact-me">
-      Have a question or comment? Contact me at <a href="mailto:info@laborforzion.com">info@laborforzion.com</a>
+    {intl.formatMessage({id: "faq.contact"})} <a href="mailto:info@laborforzion.com">info@laborforzion.com</a>
     </div>
   </>
-)
+)}
 
 export default FAQ

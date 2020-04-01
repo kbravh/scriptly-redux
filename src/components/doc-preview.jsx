@@ -1,11 +1,10 @@
 import React from 'react';
-// import {useTranslation} from 'react-i18next';
+import {useIntl} from 'gatsby-plugin-intl'
 
 import './css/doc-preview.css'
 
 const DocPreview = () => {
-    // eslint-disable-next-line
-    // const { t, i18n } = useTranslation();
+    const intl = useIntl()
 
     return (
         <div className="doc-preview shadow">
@@ -13,7 +12,7 @@ const DocPreview = () => {
                 <span>Damon Greer</span>
                 <span>Patriarchal Blessing</span>
             </div>
-            <div className="title">THE BOOK OF DAMON</div>
+            <div className="title">{intl.formatMessage({id: "home.book"})} DAMON</div>
             <p className="book-intro">
                 Blessing given by Henry Coulson, Patriarch of the Aurora Colorado stake to Damon Greer, son of Melissa Jane Deckow and Craig Wilson Greer, on October 16, 2005.
             </p>

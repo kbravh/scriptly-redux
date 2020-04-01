@@ -5,6 +5,7 @@ import Toggle from 'react-toggle'
 import '../components/css/toggle.css'
 import Calendar from 'react-calendar'
 import { motion } from 'framer-motion'
+import { useIntl } from 'gatsby-plugin-intl'
 
 import 'react-calendar/dist/Calendar.css';
 
@@ -15,6 +16,7 @@ import female from '../images/female.svg'
 
 // TODO - check the state machine to see if there is already form data (for making corrections)
 const BlessingForm = ({ send }) => {
+  const intl = useIntl()
   const today = new Date() // default value for the calendar
   // set some sensible defaults
   const [colors, setColors] = useState({ brandColor: '#102542', accentColor: '#F87060' })
@@ -27,7 +29,7 @@ const BlessingForm = ({ send }) => {
 
   return (
     <>
-      <h2 style={{ textAlign: 'center' }}>Enter your patriarchal blessing information below.</h2>
+      <h2 style={{ textAlign: 'center' }}>{intl.formatMessage({ id: "form.enter-info" })}</h2>
       <div className="form-div">
         <Formik
           initialValues={{
@@ -37,31 +39,33 @@ const BlessingForm = ({ send }) => {
           }}
           onSubmit={(values, actions) => {
             actions.setSubmitting(false)
-            send('SUBMIT', { form: values }) // bump state machine and pass in form values
+            send('SUBMIT', { // bump state machine and pass in form values
+              form: { ...values, locale: intl.locale } //add locale into the form data
+            })
           }}
           validationSchema={Yup.object().shape({
-            firstName: Yup.string().required('This field is required'),
-            lastName: Yup.string().required('This field is required'),
-            patriarch: Yup.string().required('This field is required'),
-            stake: Yup.string().required('This field is required'),
-            blessing: Yup.string().required('This field is required')
+            firstName: Yup.string().required(() => intl.formatMessage({ id: "form.required" })),
+            lastName: Yup.string().required(() => intl.formatMessage({ id: "form.required" })),
+            patriarch: Yup.string().required(() => intl.formatMessage({ id: "form.required" })),
+            stake: Yup.string().required(() => intl.formatMessage({ id: "form.required" })),
+            blessing: Yup.string().required(() => intl.formatMessage({ id: "form.required" }))
           })}
         >
           {({ isSubmitting, setFieldValue, isValid, submitCount }) => (
             <Form className="blessing-form shadow">
 
-              <h5>First Name</h5>
-              <Field type="text" name="firstName" placeholder="First Name" />
+              <h5>{intl.formatMessage({ id: "form.first" })}</h5>
+              <Field type="text" name="firstName" placeholder={intl.formatMessage({ id: "form.first" })} />
               <ErrorMessage name="firstName" component="div" className="error-box" />
 
-              <h5>Middle Name <span className="optional-tag">(optional)</span></h5>
-              <Field type="text" name="middleName" placeholder="Middle Name" />
+              <h5>{intl.formatMessage({ id: "form.middle" })} <span className="optional-tag">({intl.formatMessage({ id: "form.optional" })})</span></h5>
+              <Field type="text" name="middleName" placeholder={intl.formatMessage({ id: "form.middle" })} />
 
-              <h5>Last Name</h5>
-              <Field type="text" name="lastName" placeholder="Last Name" />
+              <h5>{intl.formatMessage({ id: "form.last" })}</h5>
+              <Field type="text" name="lastName" placeholder={intl.formatMessage({ id: "form.last" })} />
               <ErrorMessage name="lastName" component="div" className="error-box" />
 
-              <h5>Gender</h5>
+              <h5>{intl.formatMessage({ id: "form.gender" })}</h5>
               <div className="gender-toggle">
                 <Field name="gender">
                   {({ field: { value, onChange } }) => (
@@ -79,32 +83,32 @@ const BlessingForm = ({ send }) => {
                         className="gender-label"
                         style={{ color: value ? colors.brandColor : colors.accentColor }}
                       >
-                        {value ? 'Male' : 'Female'}
+                        {value ? intl.formatMessage({ id: "form.male" }) : intl.formatMessage({ id: "form.female" })}
                       </h4>
                     </>
                   )}
                 </Field>
               </div>
 
-              <h5>Mother's Full Name <span className="optional-tag">(optional)</span></h5>
-              <Field type="text" name="mother" placeholder="Mother's Full Name" />
+              <h5>{intl.formatMessage({ id: "form.mother" })} <span className="optional-tag">({intl.formatMessage({ id: "form.optional" })})</span></h5>
+              <Field type="text" name="mother" placeholder={intl.formatMessage({ id: "form.mother" })} />
 
-              <h5>Father's Full Name <span className="optional-tag">(optional)</span></h5>
-              <Field type="text" name="father" placeholder="Father's Full Name" />
+              <h5>{intl.formatMessage({ id: "form.father" })} <span className="optional-tag">({intl.formatMessage({ id: "form.optional" })})</span></h5>
+              <Field type="text" name="father" placeholder={intl.formatMessage({ id: "form.father" })} />
 
-              <h5>Patriarch's Full Name</h5>
-              <Field type="text" name="patriarch" placeholder="Patriarch's Full Name" />
+              <h5>{intl.formatMessage({ id: "form.patriarch" })}</h5>
+              <Field type="text" name="patriarch" placeholder={intl.formatMessage({ id: "form.patriarch" })} />
               <ErrorMessage name="patriarch" component="div" className="error-box" />
 
-              <h5>Stake or District</h5>
+              <h5>{intl.formatMessage({ id: "form.stake" })}</h5>
               <Field type="text" name="stake" placeholder="Aurora Colorado" />
               <ErrorMessage name="stake" component="div" className="error-box" />
 
-              <h5>Date of the Blessing</h5>
+              <h5>{intl.formatMessage({ id: "form.date" })}</h5>
               <Field name="date">
                 {({ field: { value } }) => (
                   <Calendar
-                    // locale=""
+                    locale={intl.locale}
                     value={value}
                     onChange={date => setFieldValue('date', date)} // default Formik onChange doesn't handle date object, have to set it manually
                     view="decade" // default to the decade view as it can be confusing to reach the decade screen again
@@ -112,8 +116,8 @@ const BlessingForm = ({ send }) => {
                 )}
               </Field>
 
-              <h5>Blessing Text</h5>
-              <Field as="textarea" name="blessing" placeholder="Patriarchal Blessing" style={{ resize: 'vertical' }} />
+              <h5>{intl.formatMessage({ id: "form.blessing" })}</h5>
+              <Field as="textarea" name="blessing" placeholder={intl.formatMessage({ id: "form.blessing-placeholder" })} style={{ resize: 'vertical' }} />
               <ErrorMessage name="blessing" component="div" className="error-box" />
 
               {(!isValid && submitCount > 0) &&
@@ -126,9 +130,9 @@ const BlessingForm = ({ send }) => {
                   }}
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-alert-circle"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
-                  Uh oh! You seem to be missing some parts of the form.
-              </motion.div>}
-              <motion.button whileTap={{ scale: 0.9 }} className="action-button" type="submit" disabled={isSubmitting}>Generate Document</motion.button>
+                  {intl.formatMessage({ id: "form.generic-error" })}
+                </motion.div>}
+              <motion.button whileTap={{ scale: 0.9 }} className="action-button" type="submit" disabled={isSubmitting}>{intl.formatMessage({ id: "form.generate" })}</motion.button>
             </Form>
           )}
         </Formik>
