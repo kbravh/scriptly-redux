@@ -84,12 +84,23 @@ nav a:hover {
   font-family: Righteous;
   color: var(--brand-color);
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.language:hover,
-.language:focus {
+.language:hover {
   color: var(--background-color);
   background-color: var(--brand-color);
+}
+
+.language:focus::before {
+  content: url(/images/arrow.svg);
+  position: absolute;
+  transform: translateX(-50px);
+  background-repeat: no-repeat;
+  height: 15px;
+  width: 10px;
 }
 
 #nav-links {

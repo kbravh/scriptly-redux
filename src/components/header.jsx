@@ -23,7 +23,7 @@ const Header = ({ siteTitle }) => {
   }
 
   const clickOutsideHandler = event => {
-    if(languageListRef.current.contains(event.target)){
+    if(languageListRef.current.contains(event.target)|| languageButtonRef.current.contains(event.target)){
       return
     } else {
       setLanguageOpen(false)
@@ -38,7 +38,7 @@ const Header = ({ siteTitle }) => {
     } else {
       document.removeEventListener("mousedown", clickOutsideHandler)
     }
-  }, [isLanguageOpen])
+  }, [isLanguageOpen, intl.locale])
 
   return (
     <motion.header
@@ -79,7 +79,7 @@ const Header = ({ siteTitle }) => {
                 <path id="language-path" d="M28 0v22H16l-8 6v-6H0V0zm-7 5V3h-2v2h-3v2h5a11.9 11.9 0 01-1.3 4.3A14.4 14.4 0 0118 8.7v-.2l-1.8 1 .1.2c.7 1.2 1.5 2.4 2.4 3.4a12.4 12.4 0 01-2.6 2.7l-.3.2-.3.2 1.2 1.6a14.5 14.5 0 003.5-3.3 9.4 9.4 0 002.6 1.4l.6-1.8-.6-.3-1.5-1A14 14 0 0023 7h1V5zM8 6H6.7L2.4 16h2.2l.4-1 .4-1h5.2l.8 2h2.2L9.3 6zm-1.7 6h3.4L8 8z" />
               </svg>
             </motion.button>
-            <motion.ul id="language-select"
+            <motion.div id="language-select"
               onKeyUp={handleKeypress}
               ref={languageListRef}
               animate={isLanguageOpen ? `open` : `closed`}
@@ -89,7 +89,7 @@ const Header = ({ siteTitle }) => {
               }}
             >
               {languages.map(language => (
-                <motion.button
+                <button
                   key={language.code}
                   data-code={language.code}
                   className="language"
@@ -97,9 +97,9 @@ const Header = ({ siteTitle }) => {
                   onClick={() => changeLocale(language.code)}
                 >
                   {intl.formatMessage({ id: `header.` + language.name })}
-                </motion.button>
+                </button>
               ))}
-            </motion.ul>
+            </motion.div>
           </div>
         </div>
       </nav>
