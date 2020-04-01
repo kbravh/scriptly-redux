@@ -112,6 +112,7 @@ export const preparePacket = data => {
     blessing,
     memberTitle: getMemberTitle(data.gender, data.locale),
     blessingDate: data.date,
-    template: data.locale
+    template: data.locale,
+    locale: data.locale
   }
 }

@@ -1,5 +1,8 @@
 var AWS = require('aws-sdk');
+
 const dayjs = require('dayjs')
+require('dayjs/locale/es')
+
 const localizedFormat = require('dayjs/plugin/localizedFormat')
 dayjs.extend(localizedFormat)
 
@@ -30,6 +33,9 @@ exports.handler = async (event) => {
 
     var doc = new Docxtemplater();
     doc.loadZip(zip);
+
+    //set the day.js locale
+    dayjs.locale(event.locale)
 
     //set the templateVariables
     doc.setData({

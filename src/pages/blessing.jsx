@@ -160,7 +160,6 @@ const GeneratingDocx = () => {
 
 const GeneratingPDF = () => {
   const intl = useIntl()
-  console.log(intl.locale)
   const [loader, setLoader] = useState(loadingMessages[intl.locale][0])
 
   useEffect(() => {
