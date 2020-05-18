@@ -35,13 +35,15 @@ export const getParentage = (motherName, fatherName, gender, locale) => {
   switch (locale) {
     case "en":
       parentage += child + ' of '
-      parentage += father && mother ? fatherName + ' and ' + motherName : fatherName + motherName + ","
+      parentage += father && mother ? fatherName + ' and ' + motherName : fatherName + motherName
+      parentage += ","
       break;
     case "es":
       parentage += child + ' de '
       // In Spanish, "y" changes to "e" before a "y" or "i"
       let joiner = /^(Y|I).*/i.test(motherName) ? " e " : " y "
-      parentage += father && mother ? fatherName + joiner + motherName : fatherName + motherName + ","
+      parentage += father && mother ? fatherName + joiner + motherName : fatherName + motherName
+      parentage += ","
       break;
     default:
       break;
