@@ -1,10 +1,30 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {useIntl} from 'gatsby-plugin-intl'
-
+import Typed from 'typed.js'
 import './css/doc-preview.css'
+import names from './names.json'
 
 const DocPreview = () => {
     const intl = useIntl()
+
+    const nameTypingOptions = {
+        // show localized names, but default to english if not found
+        strings: names[intl.locale] ? names[intl.locale] : names["en"],
+        startDelay: 1500,
+        typeSpeed: 100,
+        backSpeed: 100,
+        shuffle: true,
+        loop: true,
+        showCursor: false,
+        contentType: null,
+        backDelay: 3000
+    }
+
+    useEffect(() => {
+        const typed = new Typed('#scripture-name', nameTypingOptions)
+        typed.start()
+        return () => {typed.destroy()} // cleanup on unmount to prevent memory leaks
+    })
 
     return (
         <div className="doc-preview shadow">
@@ -12,7 +32,7 @@ const DocPreview = () => {
                 <span>Damon Greer</span>
                 <span>Patriarchal Blessing</span>
             </div>
-            <div className="title">{intl.formatMessage({id: "home.book"})} DAMON</div>
+            <div className="title">{intl.formatMessage({id: "home.book"})} <span id="scripture-name">ANDREA</span></div>
             <p className="book-intro">
                 Blessing given by Henry Coulson, Patriarch of the Aurora Colorado stake to Damon Greer, son of Melissa Jane Deckow and Craig Wilson Greer, on October 16, 2005.
             </p>
