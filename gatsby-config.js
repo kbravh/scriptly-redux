@@ -52,11 +52,7 @@ module.exports = {
             text: `THE BOOK OF EL LIBRO DE DAMON`
           },
           {
-            family: 'Alata'
-          },
-          {
-            family: 'Righteous',
-            variants: [`400`]
+            family: 'Della Respira',
           }
         ]
       }

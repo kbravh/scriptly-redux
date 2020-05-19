@@ -5,6 +5,10 @@ header {
   justify-content: center;
 }
 
+header * {
+  font-family: 'Della Respira';
+}
+
 nav {
   padding: 1.45rem 1.0875rem;
   display: flex;
@@ -32,6 +36,8 @@ nav a:hover {
 .brand-logo {
   display: flex;
   align-items: center;
+  text-transform: uppercase;
+  font-weight: 400;
 }
 
 .brand-logo:hover {
@@ -82,7 +88,7 @@ nav a:hover {
   outline: none;
   padding: 10px;
   border-radius: 5px;
-  font-family: Righteous;
+  font-family: 'Della Respira';
   color: var(--brand-color);
   width: 100%;
   display: flex;
