@@ -36,7 +36,6 @@ nav a:hover {
 .brand-logo {
   display: flex;
   align-items: center;
-  text-transform: uppercase;
   font-weight: 400;
 }
 
@@ -116,12 +115,18 @@ nav a:hover {
   align-items: center;
 }
 
-#nav-links>* {
+#nav-links>*:not(:first-child) {
   margin-left: 30px;
 }
 
 @media only screen and (max-width: 800px) {
   header {
     height: 70px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .site-title {
+    display: none;
   }
 }
