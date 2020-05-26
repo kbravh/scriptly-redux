@@ -54,18 +54,18 @@ const BlessingForm = ({ send }) => {
           {({ isSubmitting, setFieldValue, isValid, submitCount }) => (
             <Form className="blessing-form shadow">
 
-              <h5>{intl.formatMessage({ id: "form.first" })}</h5>
+              <h4 className="field-title">{intl.formatMessage({ id: "form.first" })}</h4>
               <Field type="text" name="firstName" placeholder={intl.formatMessage({ id: "form.first" })} />
               <ErrorMessage name="firstName" component="div" className="error-box" />
 
-              <h5>{intl.formatMessage({ id: "form.middle" })} <span className="optional-tag">({intl.formatMessage({ id: "form.optional" })})</span></h5>
+              <h4 className="field-title">{intl.formatMessage({ id: "form.middle" })} <span className="optional-tag">({intl.formatMessage({ id: "form.optional" })})</span></h4>
               <Field type="text" name="middleName" placeholder={intl.formatMessage({ id: "form.middle" })} />
 
-              <h5>{intl.formatMessage({ id: "form.last" })}</h5>
+              <h4 className="field-title">{intl.formatMessage({ id: "form.last" })}</h4>
               <Field type="text" name="lastName" placeholder={intl.formatMessage({ id: "form.last" })} />
               <ErrorMessage name="lastName" component="div" className="error-box" />
 
-              <h5>{intl.formatMessage({ id: "form.gender" })}</h5>
+              <h4 className="field-title">{intl.formatMessage({ id: "form.gender" })}</h4>
               <div className="gender-toggle">
                 <Field name="gender">
                   {({ field: { value, onChange } }) => (
@@ -81,7 +81,8 @@ const BlessingForm = ({ send }) => {
                       />
                       <h4
                         className="gender-label"
-                        style={{ color: value ? colors.brandColor : colors.accentColor }}
+                        // style={{ color: value ? colors.brandColor : colors.accentColor }}
+                        style={{ color: colors.brandColor }}
                       >
                         {value ? intl.formatMessage({ id: "form.male" }) : intl.formatMessage({ id: "form.female" })}
                       </h4>
@@ -90,21 +91,21 @@ const BlessingForm = ({ send }) => {
                 </Field>
               </div>
 
-              <h5>{intl.formatMessage({ id: "form.mother" })} <span className="optional-tag">({intl.formatMessage({ id: "form.optional" })})</span></h5>
+              <h4 className="field-title">{intl.formatMessage({ id: "form.mother" })} <span className="optional-tag">({intl.formatMessage({ id: "form.optional" })})</span></h4>
               <Field type="text" name="mother" placeholder={intl.formatMessage({ id: "form.mother" })} />
 
-              <h5>{intl.formatMessage({ id: "form.father" })} <span className="optional-tag">({intl.formatMessage({ id: "form.optional" })})</span></h5>
+              <h4 className="field-title">{intl.formatMessage({ id: "form.father" })} <span className="optional-tag">({intl.formatMessage({ id: "form.optional" })})</span></h4>
               <Field type="text" name="father" placeholder={intl.formatMessage({ id: "form.father" })} />
 
-              <h5>{intl.formatMessage({ id: "form.patriarch" })}</h5>
+              <h4 className="field-title">{intl.formatMessage({ id: "form.patriarch" })}</h4>
               <Field type="text" name="patriarch" placeholder={intl.formatMessage({ id: "form.patriarch" })} />
               <ErrorMessage name="patriarch" component="div" className="error-box" />
 
-              <h5>{intl.formatMessage({ id: "form.stake" })}</h5>
+              <h4 className="field-title">{intl.formatMessage({ id: "form.stake" })}</h4>
               <Field type="text" name="stake" placeholder="Aurora Colorado" />
               <ErrorMessage name="stake" component="div" className="error-box" />
 
-              <h5>{intl.formatMessage({ id: "form.date" })}</h5>
+              <h4 className="field-title">{intl.formatMessage({ id: "form.date" })}</h4>
               <Field name="date">
                 {({ field: { value } }) => (
                   <Calendar
@@ -116,7 +117,7 @@ const BlessingForm = ({ send }) => {
                 )}
               </Field>
 
-              <h5>{intl.formatMessage({ id: "form.blessing" })}</h5>
+              <h4 className="field-title">{intl.formatMessage({ id: "form.blessing" })}</h4>
               <Field as="textarea" name="blessing" placeholder={intl.formatMessage({ id: "form.blessing-placeholder" })} style={{ resize: 'vertical' }} />
               <ErrorMessage name="blessing" component="div" className="error-box" />
 
