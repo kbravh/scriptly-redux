@@ -10,7 +10,7 @@ const DocPreview = () => {
     const nameTypingOptions = {
         // show localized names, but default to english if not found
         strings: names[intl.locale] ? names[intl.locale] : names["en"],
-        startDelay: 1500,
+        startDelay: 5000,
         typeSpeed: 100,
         backSpeed: 100,
         shuffle: true,
