@@ -13,6 +13,12 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
+    {
+      resolve: `gatsby-plugin-monetization`,
+      options: {
+        paymentPointer: '$ilp.uphold.com/BfyYUyGBrEgA',
+      },
+    },
     // the layout must be above the intl plugin so that the IntlProvider wraps the layout
     {
       resolve: `gatsby-plugin-layout`,
