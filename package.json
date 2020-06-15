@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-default",
-  "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
-  "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "name": "scriptly",
+  "private": false,
+  "description": "A site for creating scripture-styled patriarchal blessings.",
+  "version": "1.0.0",
+  "author": "Karey Higuera <karey.higuera@gmail.com>",
   "dependencies": {
     "@sentry/browser": "^5.12.4",
     "@xstate/react": "^0.8.1",
