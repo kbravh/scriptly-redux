@@ -66,9 +66,12 @@ Would you like to help translate to a new language? Get in touch!
 ## Backend 
 
 The backend functions are at the root level of the repository in these folders.
+
+```
 .
 ├── scriptly-docx-lambda
 └── scriptly-pdf-lambda
+```
 
 Once the user posts their form data, it is sent over to the `scriptly-docx-lambda` function. This function has docx templates which are populated with the user's data by the [docxtemplater](https://github.com/open-xml-templating/docxtemplater) library. After the docx is created, the `scriptly-pdf-lambda` function is called. It picks up the docx file from S3 and converts it to a PDF using a headless OpenOffice in Lambda.  
 
