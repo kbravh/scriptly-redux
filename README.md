@@ -79,3 +79,4 @@ Once the user posts their form data, it is sent over to the `scriptly-docx-lambd
 
 * Visual testing using Jest or Cypress
 * OCR/text-recognition so that users can upload PDF versions of their blessings instead of typing them
+* A completely client-side method for creating the scripture pages
