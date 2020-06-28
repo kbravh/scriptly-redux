@@ -11,7 +11,7 @@ const IndexPage = () => {
   const intl = useIntl()
   return (
     <>
-      <SEO title={intl.formatMessage({ id: "home.title" })} />
+      <SEO title="Scriptly" />
       <motion.div className="home" key="home"
         initial="hidden"
         animate="visible"
