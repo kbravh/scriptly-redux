@@ -2,7 +2,8 @@ module.exports = {
   siteMetadata: {
     title: `Scriptly`,
     description: `Make your patriarchal blessing look like it was taken right out of the pages of the scriptures.`,
-    author: `@laborforzion`,
+    author: `@kbravh`,
+    baseUrl: `https://scripture.page`
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
