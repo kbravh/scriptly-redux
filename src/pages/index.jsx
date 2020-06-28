@@ -26,7 +26,6 @@ const IndexPage = () => {
           <h1>{intl.formatMessage({ id: "home.welcome" })}</h1>
           <p>{intl.formatMessage({ id: "home.personal-chapter" })} <span style={{ fontStyle: 'italic' }}>{intl.formatMessage({ id: "home.justforyou" })}</span>.</p>
           <p>{intl.formatMessage({ id: "home.look-like" })}</p>
-          <Link to="/what_is" className="regular-link">{intl.formatMessage({ id: "whatIs.title" })}</Link>
         </div>
         <DocPreview />
       </motion.div>
@@ -42,6 +41,9 @@ const IndexPage = () => {
       >
         <Link to="/blessing" className="action-button">{intl.formatMessage({ id: "home.start" })}</Link>
       </motion.div>
+      <div style={{marginTop: '20px'}}>
+        <Link to="/what_is" className="regular-link">{intl.formatMessage({ id: "whatIs.title" })}</Link>
+      </div>
     </>
   )
 }
