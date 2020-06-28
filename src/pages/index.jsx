@@ -11,7 +11,7 @@ const IndexPage = () => {
   const intl = useIntl()
   return (
     <>
-      <SEO title={intl.formatMessage({id: "home.title"})} />
+      <SEO title={intl.formatMessage({ id: "home.title" })} />
       <motion.div className="home" key="home"
         initial="hidden"
         animate="visible"
@@ -23,9 +23,10 @@ const IndexPage = () => {
         transition={{ duration: .75 }}
       >
         <div className="welcome">
-          <h1>{intl.formatMessage({id: "home.welcome"})}</h1>
-          <p>{intl.formatMessage({id: "home.personal-chapter"})} <span style={{ fontStyle: 'italic' }}>{intl.formatMessage({id: "home.justforyou"})}</span>.</p>
-          <p>{intl.formatMessage({id: "home.look-like"})}</p>
+          <h1>{intl.formatMessage({ id: "home.welcome" })}</h1>
+          <p>{intl.formatMessage({ id: "home.personal-chapter" })} <span style={{ fontStyle: 'italic' }}>{intl.formatMessage({ id: "home.justforyou" })}</span>.</p>
+          <p>{intl.formatMessage({ id: "home.look-like" })}</p>
+          <Link to="/what_is" className="regular-link">{intl.formatMessage({ id: "whatIs.title" })}</Link>
         </div>
         <DocPreview />
       </motion.div>
@@ -39,7 +40,7 @@ const IndexPage = () => {
         }}
         transition={{ duration: .75 }}
       >
-        <Link to="/blessing" className="action-button">{intl.formatMessage({id: "home.start"})}</Link>
+        <Link to="/blessing" className="action-button">{intl.formatMessage({ id: "home.start" })}</Link>
       </motion.div>
     </>
   )

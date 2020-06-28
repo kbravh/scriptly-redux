@@ -41,6 +41,16 @@ body {
   font-family: 'Della Respira', sans-serif;
 }
 
+.regular-link {
+  color: var(--accent-color);
+  text-decoration: underline dotted var(--accent-color);
+  transition: all 0.2s ease;
+}
+
+.regular-link:hover {
+  text-decoration: underline dotted var(--brand-color);
+}
+
 /* Index page */
 
 main {
@@ -73,7 +83,6 @@ main {
 
 .welcome * {
   font-family: 'Della Respira';
-  font-weight: 700;
 }
 
 @media only screen and (max-width: 800px) {
