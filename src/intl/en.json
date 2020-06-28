@@ -1,69 +1,69 @@
 {
-  "home": {
-    "title": "Home",
-    "welcome": "Welcome to Scriptly!",
-    "personal-chapter": "Your patriarchal blessing is like a personal chapter of scripture written",
-    "justforyou": "just for you",
-    "look-like": "We think it should look like one, too.",
-    "start": "Get started",
-    "book": "THE BOOK OF"
-  },
-  "header": {
-    "faq": "FAQ",
-    "lang-menu": "Language Select Menu",
-    "english": "English",
-    "spanish": "Spanish"
-  },
-  "faq": {
-    "title": "Frequently Asked Questions",
-    "seen-by-others": "Is my patriarchal blessing going to be seen by anyone else?",
-    "seen-by-others-answer": "This is a completely automated process, so no one sees your patriarchal blessing at any point. Your documents will automatically be erased after 24 hours for more security.",
-    "contact": "Have a question or comment? Contact me at"
-  },
-  "whatIs": {
-    "title": "What is a patriarchal blessing?",
-    "members": "As members of the Church of Jesus Christ of Latter-day Saints, we believe that God lives, cares for us, and guides us in our daily lives. One of the most special gifts that he gives us is something called a patriarchal blessing.",
-    "patriarch": "A member of the church who holds the office of patriarch will lay his hands on our head and give us a special blessing. This blessing contains divine guidance from the Lord to help us make decisions in our lives. It's what the Lord would tell us himself if he were there to give us the blessing.",
-    "find": "Find out more at the ",
-    "church": "Church of Jesus Christ of Latter-day Saints"
-  },
-  "404": {
-    "title": "404: Not Found",
-    "notfound": "NOT FOUND",
-    "message": "The page you were looking for couldn't be found!"
-  },
-  "form": {
-    "title": "Patriarchal Blessing",
-    "enter-info": "Enter your patriarchal blessing information below.",
-    "required": "This field is required",
-    "optional": "optional",
-    "first": "First Name",
-    "middle": "Middle Name",
-    "last": "Last Name",
-    "gender": "Gender",
-    "male": "Male",
-    "female": "Female",
-    "mother": "Mother's Full Name",
-    "father": "Father's Full Name",
-    "patriarch": "Patriarch's Full Name",
-    "stake": "Stake or District",
-    "date": "Date of the Blessing",
-    "blessing": "Blessing Text",
-    "blessing-placeholder": "Patriarchal Blessing",
-    "generic-error": "Uh oh! You seem to be missing some parts of the form.",
-    "generate": "Generate Document"
-  },
-  "download": {
-    "error-docx": "Uh oh, it seems like an error occurred. Try again?",
-    "retry": "Retry",
-    "error-pdf": "Uh oh, it seems like an error occurred while making the PDF. Try again?",
-    "meanwhile-docx": "You can still download the Word document here for now.",
-    "download-docx": "Download docx",
-    "congrats": "Congrats!",
-    "blessing-here": "Here is your scripture-styled blessing.",
-    "link-expiry": "This link will expire in 10 minutes.",
-    "download-pdf": "Download pdf",
-    "word-message": "Need to make any changes? Download this Word document instead.",
-    "writing": "Writing scriptures..."
-  }
+    "home": {
+        "title": "Home",
+        "welcome": "Welcome to Scriptly!",
+        "personal-chapter": "Your patriarchal blessing is like a personal chapter of scripture written",
+        "justforyou": "just for you",
+        "look-like": "We think it should look like one, too.",
+        "start": "Get started",
+        "book": "THE BOOK OF"
+    },
+    "header": {
+        "faq": "FAQ",
+        "lang-menu": "Language Select Menu",
+        "english": "English",
+        "spanish": "Spanish"
+    },
+    "faq": {
+        "title": "Frequently Asked Questions",
+        "seen-by-others": "Is my patriarchal blessing going to be seen by anyone else?",
+        "seen-by-others-answer": "This is a completely automated process, so no one sees your patriarchal blessing at any point. Your documents will automatically be erased after 24 hours for more security.",
+        "contact": "Have a question or comment? Contact me at"
+    },
+    "whatIs": {
+        "title": "What is a patriarchal blessing?",
+        "members": "As members of the Church of Jesus Christ of Latter-day Saints, we believe that God lives, cares for us, and guides us in our daily lives. One of the most special gifts that he gives us is something called a patriarchal blessing.",
+        "patriarch": "A member of the church who holds the office of patriarch will lay his hands on our head and give us a special blessing. This blessing contains divine guidance from the Lord to help us make decisions in our lives. It's what the Lord would tell us himself if he were there to give us the blessing.",
+        "find": "Find out more at the ",
+        "church": "Church of Jesus Christ of Latter-day Saints"
+    },
+    "404": {
+        "title": "404: Not Found",
+        "notfound": "NOT FOUND",
+        "message": "The page you were looking for couldn't be found!"
+    },
+    "form": {
+        "title": "Patriarchal Blessing",
+        "enter-info": "Enter your patriarchal blessing information below.",
+        "required": "This field is required",
+        "optional": "optional",
+        "first": "First Name",
+        "middle": "Middle Name",
+        "last": "Last Name",
+        "gender": "Gender",
+        "male": "Male",
+        "female": "Female",
+        "mother": "Mother's Full Name",
+        "father": "Father's Full Name",
+        "patriarch": "Patriarch's Full Name",
+        "stake": "Stake or District",
+        "date": "Date of the Blessing",
+        "blessing": "Blessing Text",
+        "blessing-placeholder": "Paste your Patriarchal Blessing Here",
+        "generic-error": "Uh oh! You seem to be missing some parts of the form.",
+        "generate": "Generate Document"
+    },
+    "download": {
+        "error-docx": "Uh oh, it seems like an error occurred. Try again?",
+        "retry": "Retry",
+        "error-pdf": "Uh oh, it seems like an error occurred while making the PDF. Try again?",
+        "meanwhile-docx": "You can still download the Word document here for now.",
+        "download-docx": "Download docx",
+        "congrats": "Congrats!",
+        "blessing-here": "Here is your scripture-styled blessing.",
+        "link-expiry": "This link will expire in 10 minutes.",
+        "download-pdf": "Download pdf",
+        "word-message": "Need to make any changes? Download this Word document instead.",
+        "writing": "Writing scriptures..."
+    }
 }
