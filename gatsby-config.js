@@ -56,7 +56,7 @@ module.exports = {
         fonts: [
           {
             family: 'Cormorant Garamond',
-            text: `THE BOOK OF EL LIBRO DE DAMON`
+            // text: `THE BOOK OF EL LIBRO DE DAMON`
           },
           {
             family: 'Della Respira',

@@ -1,122 +1,127 @@
 /* Colors */
+
 :root {
-  --brand-color: #102542;
-  --background-color: #F7F7F7;
-  --accent-color: #F87060;
+    --brand-color: #102542;
+    --background-color: #F7F7F7;
+    --accent-color: #F87060;
 }
 
 html,
 body {
-  margin: 0;
+    margin: 0;
 }
 
 body {
-  background-color: var(--background-color);
-  background-image: url("data:image/svg+xml,%3Csvg width='32' height='64' viewBox='0 0 32 64' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 28h20V16h-4v8H4V4h28v28h-4V8H8v12h4v-8h12v20H0v-4zm12 8h20v4H16v24H0v-4h12V36zm16 12h-4v12h8v4H20V44h12v12h-4v-8zM0 36h8v20H0v-4h4V40H0v-4z' fill='%23102542' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
+    background-color: var(--background-color);
+    background-image: url("data:image/svg+xml,%3Csvg width='32' height='64' viewBox='0 0 32 64' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 28h20V16h-4v8H4V4h28v28h-4V8H8v12h4v-8h12v20H0v-4zm12 8h20v4H16v24H0v-4h12V36zm16 12h-4v12h8v4H20V44h12v12h-4v-8zM0 36h8v20H0v-4h4V40H0v-4z' fill='%23102542' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
+}
+
+p {
+    font-size: 24px;
+    font-family: 'Cormorant Garamond';
 }
 
 .action-button {
-  border: none;
-  text-decoration: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  box-shadow: #00000066 2px 2px;
-  text-transform: uppercase;
-  background-color: var(--accent-color);
-  color: var(--background-color);
-  transition: all 0.25s ease-out;
-  font-family: 'Della Respira', sans-serif;
+    border: none;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: #00000066 2px 2px;
+    text-transform: uppercase;
+    background-color: var(--accent-color);
+    color: var(--background-color);
+    transition: all 0.25s ease-out;
+    font-family: 'Della Respira', sans-serif;
 }
 
 .secondary-button {
-  border: none;
-  text-decoration: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  box-shadow: #00000066 2px 2px;
-  text-transform: uppercase;
-  background-color: var(--brand-color);
-  color: var(--background-color);
-  transition: all 0.25s ease-out;
-  font-family: 'Della Respira', sans-serif;
+    border: none;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: #00000066 2px 2px;
+    text-transform: uppercase;
+    background-color: var(--brand-color);
+    color: var(--background-color);
+    transition: all 0.25s ease-out;
+    font-family: 'Della Respira', sans-serif;
 }
 
 .regular-link {
-  color: var(--accent-color);
-  text-decoration: underline dotted var(--accent-color);
-  transition: all 0.2s ease;
+    color: var(--accent-color);
+    text-decoration: underline dotted var(--accent-color);
+    transition: all 0.2s ease;
 }
 
 .regular-link:hover {
-  text-decoration: underline dotted var(--brand-color);
+    text-decoration: underline dotted var(--brand-color);
 }
+
 
 /* Index page */
 
 main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin: 80px 50px;
-}
-
-.home {
-  display: flex;
-  max-width: 700px;
-  width: 100%;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 40px;
-}
-
-.welcome {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  max-width: 400px;
-  margin: 5px;
-  font-size: 1.2rem;
-  line-height: 1.5rem;
-}
-
-.welcome * {
-  font-family: 'Della Respira';
-}
-
-@media only screen and (max-width: 800px) {
-  .home {
-    flex-direction: column;
-    margin-bottom: 0;
-  }
-
-  .welcome {
-    text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
+    justify-content: center;
+    margin: 80px 50px;
+}
 
-  main {
-    margin: 20px 40px;
-  }
+.home {
+    display: flex;
+    max-width: 700px;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.welcome {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 400px;
+    margin: 5px;
+    font-size: 1.2rem;
+    line-height: 1.5rem;
+}
+
+.welcome * {
+    font-family: 'Della Respira';
+}
+
+@media only screen and (max-width: 800px) {
+    .home {
+        flex-direction: column;
+        margin-bottom: 0;
+    }
+    .welcome {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    main {
+        margin: 20px 40px;
+    }
 }
 
 @media only screen and (max-width: 475px) {
-  main {
-    margin: 20px 0px;
-  }
+    main {
+        margin: 20px 0px;
+    }
 }
 
 .error-box {
-  margin-top: -20px;
-  color: var(--accent-color);
-  font-size: 0.9rem;
+    margin-top: -20px;
+    color: var(--accent-color);
+    font-size: 0.9rem;
 }
 
 .shadow {
-  -moz-box-shadow: 3px 3px 5px 2px #10254233;
-  -webkit-box-shadow: 3px 3px 5px 2px #10254233;
-  box-shadow: 3px 3px 5px 2px #10254233;
+    -moz-box-shadow: 3px 3px 5px 2px #10254233;
+    -webkit-box-shadow: 3px 3px 5px 2px #10254233;
+    box-shadow: 3px 3px 5px 2px #10254233;
 }
