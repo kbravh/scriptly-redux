@@ -41,9 +41,18 @@ const IndexPage = () => {
       >
         <Link to="/blessing" className="action-button">{intl.formatMessage({ id: "home.start" })}</Link>
       </motion.div>
-      <div style={{marginTop: '20px'}}>
+      <motion.div style={{ marginTop: '20px' }} key="what-is-link"
+        initial="hidden"
+        animate="visible"
+        exit={{ y: 100, opacity: 0 }}
+        variants={{
+          hidden: { y: 100, opacity: 0 },
+          visible: { y: 0, opacity: 1 }
+        }}
+        transition={{ duration: .75 }}
+      >
         <Link to="/what_is" className="regular-link">{intl.formatMessage({ id: "whatIs.title" })}</Link>
-      </div>
+      </motion.div>
     </>
   )
 }
