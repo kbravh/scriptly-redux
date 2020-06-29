@@ -3,7 +3,7 @@ module.exports = {
         title: `Scriptly`,
         description: `Make your patriarchal blessing look like it was taken right out of the pages of the scriptures.`,
         author: `@kbravh`,
-        baseUrl: `https://scripture.page`
+        siteUrl: `https://scripture.page`
     },
     plugins: [
         `gatsby-plugin-react-helmet`,
@@ -40,6 +40,15 @@ module.exports = {
                 redirect: false,
             },
         },
+        `gatsby-plugin-sitemap`,
+        {
+            resolve: 'gatsby-plugin-robots-txt',
+            options: {
+                host: 'https://scripture.page',
+                sitemap: 'https://scripture.page/sitemap.xml',
+                policy: [{ userAgent: '*', allow: '/' }]
+            }
+        },
         {
             resolve: "gatsby-plugin-sentry",
             options: {
@@ -55,7 +64,6 @@ module.exports = {
             options: {
                 fonts: [{
                         family: 'Cormorant Garamond',
-                        // text: `THE BOOK OF EL LIBRO DE DAMON`
                     },
                     {
                         family: 'Della Respira',

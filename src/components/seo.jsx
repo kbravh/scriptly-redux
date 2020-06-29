@@ -12,7 +12,7 @@ function SEO({ description, lang, meta, title }) {
             title
             description
             author
-            baseUrl
+            siteUrl
           }
         }
         file(relativePath: {eq: "socialImage.png"}) {
@@ -46,7 +46,7 @@ function SEO({ description, lang, meta, title }) {
         },
         {
           property: `og:image`,
-          content: `${site.siteMetadata.baseUrl}${file.publicURL}`
+          content: `${site.siteMetadata.siteUrl}${file.publicURL}`
         },
         {
           property: `og:type`,
