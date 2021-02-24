@@ -7,6 +7,7 @@ module.exports = {
     },
     plugins: [
         `gatsby-plugin-react-helmet`,
+        `gatsby-plugin-netlify`,
         {
             resolve: `gatsby-source-filesystem`,
             options: {
@@ -60,19 +61,13 @@ module.exports = {
         `gatsby-transformer-sharp`,
         `gatsby-plugin-sharp`,
         {
-            resolve: `gatsby-plugin-prefetch-google-fonts`,
+            resolve: `gatsby-plugin-web-font-loader`,
             options: {
-                fonts: [{
-                        family: 'Cormorant Garamond',
-                    },
-                    {
-                        family: 'Della Respira',
-                    }
-                ]
+                google: {
+                    families: ['Cormorant Garamond', 'Della Respira']
+                }
             }
         },
-        // this (optional) plugin enables Progressive Web App + Offline functionality
-        // To learn more, visit: https://gatsby.dev/offline
-        `gatsby-plugin-offline`,
+        `gatsby-plugin-remove-serviceworker`
     ],
 }
