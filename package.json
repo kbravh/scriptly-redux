@@ -10,7 +10,7 @@
     "axios": "^0.19.2",
     "formik": "^2.1.2",
     "framer-motion": "^1.8.4",
-    "gatsby": "^2.19.5",
+    "gatsby": "^4.25.7",
     "gatsby-background-image": "^0.9.12",
     "gatsby-image": "^2.2.34",
     "gatsby-plugin-intl": "^0.3.3",
